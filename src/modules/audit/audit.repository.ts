@@ -1,5 +1,5 @@
 // src/modules/audit/audit.repository.ts
-import { prisma } from "@/src/lib/prisma";
+import { prisma } from "@/lib/prisma";
 
 interface CreateAuditLogParams {
   entityName: string;

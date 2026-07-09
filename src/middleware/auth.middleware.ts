@@ -3,9 +3,9 @@ import { NextRequest } from "next/server";
 import {
   verifyAccessToken,
   AccessTokenPayload,
-} from "@/src/core/security/jwt.util";
-import { ApiError } from "@/core/response/ApiError";
-import { prisma } from "@/src/lib/prisma";
+} from "@/core/security/jwt.util";
+import { ApiError } from "@/core/response/api-error";
+import { prisma } from "@/lib/prisma";
 
 export interface AuthenticatedRequest extends NextRequest {
   user: AccessTokenPayload;

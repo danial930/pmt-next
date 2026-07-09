@@ -5,15 +5,15 @@ import {
   hashPassword,
   comparePassword,
   hashToken,
-} from "@/src/core/security/hash.util";
+} from "@/core/security/hash.util";
 import {
   signAccessToken,
   signRefreshToken,
   verifyRefreshToken,
-} from "@/src/core/security/jwt.util";
-import { ApiError } from "@/core/response/ApiError";
-import { env } from "@/src/config/env";
-import { AuditService } from "@/src/modules/audit/audit.service";
+} from "@/core/security/jwt.util";
+import { ApiError } from "@/core/response/api-error";
+import { env } from "@/config/env";
+import { AuditService } from "@/modules/audit/audit.service";
 import {
   RegisterInput,
   LoginInput,

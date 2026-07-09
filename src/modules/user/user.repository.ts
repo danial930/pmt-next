@@ -1,7 +1,7 @@
 // src/modules/user/user.repository.ts
-import { prisma } from "@/src/lib/prisma";
+import { prisma } from "@/lib/prisma";
 import { Prisma } from "@prisma/client";
-import { getSkipTake } from "@/src/core/pagination/pagination.util";
+import { getSkipTake } from "@/core/pagination/pagination.util";
 
 export class UserRepository {
   async findById(id: string) {
@@ -83,7 +83,7 @@ export class UserRepository {
   }
 
   async setUserRoles(userId: string, roleIds: string[], updatedBy: string) {
-    return prisma.$transaction(async (tx) => {
+    return prisma.$transaction(async (tx: any) => {
       await tx.userRole.updateMany({
         where: { userId, isActive: true },
         data: { isActive: false, updatedBy },

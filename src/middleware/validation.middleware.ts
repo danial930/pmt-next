@@ -1,7 +1,7 @@
 // src/middleware/validation.middleware.ts
 import { NextRequest } from "next/server";
 import { ZodSchema } from "zod";
-import { ApiError } from "@/core/response/ApiError";
+import { ApiError } from "@/core/response/api-error";
 
 export const validateBody = async <T>(
   req: NextRequest,

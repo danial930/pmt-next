@@ -1,6 +1,6 @@
 // src/modules/user/user.validator.ts
 import { z } from "zod";
-import { paginationSchema } from "@/src/core/pagination/pagination.util";
+import { paginationSchema } from "@/core/pagination/pagination.util";
 
 const passwordSchema = z
   .string()

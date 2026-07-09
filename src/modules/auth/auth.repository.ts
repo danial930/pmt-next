@@ -1,5 +1,5 @@
 // src/modules/auth/auth.repository.ts
-import { prisma } from "@/src/lib/prisma";
+import { prisma } from "@/lib/prisma";
 import { Prisma } from "@prisma/client";
 
 export class AuthRepository {

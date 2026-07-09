@@ -1,7 +1,7 @@
 // src/middleware/role.middleware.ts
 import { NextRequest } from "next/server";
-import { AccessTokenPayload } from "@/src/core/security/jwt.util";
-import { ApiError } from "@/core/response/ApiError";
+import { AccessTokenPayload } from "@/core/security/jwt.util";
+import { ApiError } from "@/core/response/api-error";
 import { authenticate } from "./auth.middleware";
 
 type Handler = (

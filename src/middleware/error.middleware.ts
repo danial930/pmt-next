@@ -1,8 +1,8 @@
 // src/middleware/error.middleware.ts
 import { NextRequest } from "next/server";
-import { ApiResponse } from "@/core/response/ApiResponse";
-import { ApiError } from "@/core/response/ApiError";
-import { logger } from "@/src/lib/logger";
+import { ApiResponse } from "@/core/response/api-response";
+import { ApiError } from "@/core/response/api-error";
+import { logger } from "@/lib/logger";
 import { ZodError } from "zod";
 import { Prisma } from "@prisma/client";
 

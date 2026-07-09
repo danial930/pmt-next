@@ -1,17 +1,17 @@
 // src/modules/user/user.controller.ts
 import { NextRequest } from "next/server";
 import { UserService } from "./user.service";
-import { ApiResponse } from "@/core/response/ApiResponse";
+import { ApiResponse } from "@/core/response/api-response";
 import {
   validateBody,
   validateQuery,
-} from "@/src/middleware/validation.middleware";
+} from "@/middleware/validation.middleware";
 import {
   createUserSchema,
   updateUserSchema,
   userQuerySchema,
 } from "./user.validator";
-import { AccessTokenPayload } from "@/src/core/security/jwt.util";
+import { AccessTokenPayload } from "@/core/security/jwt.util";
 
 const service = new UserService();
 

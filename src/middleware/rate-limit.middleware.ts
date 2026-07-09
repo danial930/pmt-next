@@ -1,7 +1,7 @@
 // src/middleware/rateLimit.middleware.ts
 import { NextRequest } from "next/server";
-import { ApiError } from "@/core/response/ApiError";
-import { env } from "@/src/config/env";
+import { ApiError } from "@/core/response/api-error";
+import { env } from "@/config/env";
 
 // In-memory store (use Redis in multi-instance deployments)
 const store = new Map<string, { count: number; resetAt: number }>();

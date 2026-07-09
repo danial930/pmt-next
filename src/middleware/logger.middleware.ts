@@ -1,6 +1,6 @@
 // src/middleware/logger.middleware.ts
 import { NextRequest } from "next/server";
-import { logger } from "@/src/lib/logger";
+import { logger } from "@/lib/logger";
 
 type Handler = (req: NextRequest, ctx?: any) => Promise<Response>;
 

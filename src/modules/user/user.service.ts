@@ -1,18 +1,15 @@
 // src/modules/user/user.service.ts
 import { UserRepository } from "./user.repository";
-import {
-  AuditService,
-  sanitizeForAudit,
-} from "@/src/modules/audit/audit.service";
-import { hashPassword } from "@/src/core/security/hash.util";
-import { ApiError } from "@/core/response/ApiError";
+import { AuditService, sanitizeForAudit } from "@/modules/audit/audit.service";
+import { hashPassword } from "@/core/security/hash.util";
+import { ApiError } from "@/core/response/api-error";
 import {
   CreateUserInput,
   UpdateUserInput,
   UserQueryInput,
 } from "./user.validator";
 import { UserListItemDto } from "./user.dto";
-import { getPaginationMeta } from "@/src/core/pagination/pagination.util";
+import { getPaginationMeta } from "@/core/pagination/pagination.util";
 
 export class UserService {
   constructor(
@@ -36,7 +33,7 @@ export class UserService {
   async list(query: UserQueryInput, requestingUserId: string) {
     const { items, total } = await this.repo.findMany(query);
     return {
-      data: items.map((u) => this.toListItem(u)),
+      data: items.map((u: any) => this.toListItem(u)),
       meta: getPaginationMeta(total, query.page, query.limit),
     };
   }
@@ -93,7 +90,7 @@ export class UserService {
       firstName: existing.firstName,
       lastName: existing.lastName,
       isActive: existing.isActive,
-      roles: existing.userRoles.map((ur) => ur.roleId),
+      roles: existing.userRoles.map((ur: any) => ur.roleId),
     });
 
     const { roleIds, ...rest } = input;

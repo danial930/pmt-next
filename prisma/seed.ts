@@ -2,9 +2,17 @@
 import bcrypt from "bcryptjs";
 import { ROLES } from "../src/constants/roles.constants";
 import { PERMISSIONS } from "../src/constants/permissions.constants";
-import { PrismaClient } from "@prisma/client/extension";
+// import { PrismaClient } from "@prisma/client/extension";
+import { PrismaClient } from "./generated/client";
 
-const prisma = new PrismaClient();
+// const prisma = new PrismaClient();
+
+// Import the driver adapter for your specific database (example uses PostgreSQL)
+import { PrismaPg } from "@prisma/adapter-pg";
+// Initialize the adapter according to your driver's requirements
+const adapter = new PrismaPg({ connectionString: process.env.DATABASE_URL });
+// Pass the adapter instance to PrismaClient
+const prisma = new PrismaClient({ adapter });
 
 async function main() {
   // Permissions

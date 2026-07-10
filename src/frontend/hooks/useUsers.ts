@@ -9,11 +9,19 @@ export const userKeys = {
 };
 
 export const useUsers = (params: UserQueryParams) => {
-  return useQuery({
+
+  const users = useQuery({
     queryKey: userKeys.list(params),
     queryFn: () => userService.list(params),
     placeholderData: (prev) => prev,
   });
+
+  if (users.data?.data) {
+    return users;
+  }
+  else {
+    return { data: null, isLoading: false, isError: false };
+  }
 };
 
 export const useUser = (id: string) => {

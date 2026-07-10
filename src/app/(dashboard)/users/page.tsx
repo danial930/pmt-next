@@ -8,7 +8,8 @@ export default function UsersPage() {
   const [page, setPage] = useState(1);
   const [search, setSearch] = useState('');
 
-  const { data, isLoading, isError } = useUsers({ page, limit: 10, search, sortBy: 'createdAt', sortOrder: 'desc' });
+
+  const { data, isLoading, isError } =  useUsers({ page, limit: 10, search, sortBy: 'createdAt', sortOrder: 'desc' }); 
   const deleteUser = useDeleteUser();
 
   if (isLoading) return <div className="p-6 text-gray-500">Loading users...</div>;

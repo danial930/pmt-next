@@ -39,4 +39,27 @@ export const authService = {
     });
     return data;
   },
+
+
+
+  register: async (
+    email: string,
+    password: string,
+    firstName: string,
+    lastName: string,
+  ): Promise<{ id: string; email: string }> => {
+    const { data } = await apiClient.post('/auth/register', {
+      email,
+      password,
+      firstName,
+      lastName,
+    });
+    return data.data;
+  },
+
+ 
+
+  verifyEmail: async (token: string): Promise<void> => {
+    await apiClient.get(`/auth/verify-email?token=${token}`);
+  },
 };

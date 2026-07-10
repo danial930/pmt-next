@@ -1,14 +1,18 @@
 // prisma/schema.prisma
-generator client {
-  provider = "prisma-client-js"
-}
-
 datasource db {
   provider = "postgresql"
+  
 }
 
+
+generator client {
+  provider = "prisma-client"
+  output   = "./generated"
+}
+
+
 model User {
-  id                String    @id @default(uuid())
+  id                Int    @id @default(autoincrement())
   email             String    @unique
   password          String
   firstName         String
@@ -28,8 +32,8 @@ model User {
   isActive  Boolean   @default(true)
   createdAt DateTime  @default(now())
   updatedAt DateTime  @updatedAt
-  createdBy String?
-  updatedBy String?
+  createdBy Int?
+  updatedBy Int?
 
   @@index([email])
   @@index([isActive])
@@ -37,7 +41,7 @@ model User {
 }
 
 model Role {
-  id          String   @id @default(uuid())
+  id          Int  @id @default(autoincrement())
   name        String   @unique
   description String?
 
@@ -55,7 +59,7 @@ model Role {
 }
 
 model Permission {
-  id          String   @id @default(uuid())
+  id          Int   @id @default(autoincrement())
   name        String   @unique // e.g. "user:create"
   module      String   // e.g. "user"
   action      String   // e.g. "create"
@@ -74,9 +78,9 @@ model Permission {
 }
 
 model RolePermission {
-  id           String @id @default(uuid())
-  roleId       String
-  permissionId String
+  id           Int @id @default(autoincrement())
+  roleId       Int
+  permissionId Int
 
   role       Role       @relation(fields: [roleId], references: [id], onDelete: Cascade)
   permission Permission @relation(fields: [permissionId], references: [id], onDelete: Cascade)
@@ -94,9 +98,9 @@ model RolePermission {
 }
 
 model UserRole {
-  id     String @id @default(uuid())
-  userId String
-  roleId String
+  id     Int  @id @default(autoincrement())
+  userId Int
+  roleId Int
 
   user User @relation(fields: [userId], references: [id], onDelete: Cascade)
   role Role @relation(fields: [roleId], references: [id], onDelete: Cascade)
@@ -114,8 +118,8 @@ model UserRole {
 }
 
 model RefreshToken {
-  id        String   @id @default(uuid())
-  userId    String
+  id        Int  @id @default(autoincrement())
+  userId    Int
   tokenHash String   @unique
   expiresAt DateTime
   revokedAt DateTime?
@@ -137,20 +141,20 @@ model RefreshToken {
 }
 
 model AuditLog {
-  id           String   @id @default(uuid())
+  id           Int   @id @default(autoincrement())
   entityName   String   // e.g. "User"
-  entityId     String
+  entityId     Int
   action       String   // CREATE | UPDATE | DELETE
   oldValues    Json?
   newValues    Json?
-  performedById String?
+  performedById Int?
 
   performedBy User? @relation("AuditPerformedBy", fields: [performedById], references: [id], onDelete: SetNull)
 
   isActive  Boolean  @default(true)
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
-  createdBy String?
+  createdBy Int?
   updatedBy String?
 
   @@index([entityName, entityId])

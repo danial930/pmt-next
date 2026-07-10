@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+  <title>{{subject}}</title>
+  <!--[if mso]>
+  <noscript>
+    <xml><o:OfficeDocumentSettings><o:PixelsPerInch>96</o:PixelsPerInch></o:OfficeDocumentSettings></xml>
+  </noscript>
+  <![endif]-->
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+      background-color: #f1f5f9;
+      color: #1e293b;
+      -webkit-font-smoothing: antialiased;
+    }
+    .wrapper {
+      width: 100%;
+      background-color: #f1f5f9;
+      padding: 40px 16px;
+    }
+    .container {
+      max-width: 560px;
+      margin: 0 auto;
+    }
+    /* Header */
+    .header {
+      text-align: center;
+      margin-bottom: 24px;
+    }
+    .logo {
+      display: inline-block;
+      background-color: #2563eb;
+      color: #ffffff;
+      font-size: 20px;
+      font-weight: 700;
+      width: 48px;
+      height: 48px;
+      line-height: 48px;
+      border-radius: 12px;
+      text-align: center;
+      margin-bottom: 12px;
+    }
+    .brand-name {
+      font-size: 18px;
+      font-weight: 700;
+      color: #1e293b;
+    }
+    /* Card */
+    .card {
+      background-color: #ffffff;
+      border-radius: 16px;
+      padding: 40px 40px;
+      border: 1px solid #e2e8f0;
+      box-shadow: 0 4px 24px rgba(0,0,0,0.06);
+    }
+    /* Typography */
+    .heading {
+      font-size: 22px;
+      font-weight: 700;
+      color: #0f172a;
+      margin-bottom: 12px;
+      line-height: 1.3;
+    }
+    .subheading {
+      font-size: 15px;
+      color: #475569;
+      line-height: 1.6;
+      margin-bottom: 28px;
+    }
+    /* Button */
+    .btn-wrapper {
+      text-align: center;
+      margin: 32px 0;
+    }
+    .btn {
+      display: inline-block;
+      background-color: #2563eb;
+      color: #ffffff !important;
+      text-decoration: none;
+      font-size: 15px;
+      font-weight: 600;
+      padding: 14px 32px;
+      border-radius: 8px;
+      letter-spacing: 0.01em;
+    }
+    .btn:hover { background-color: #1d4ed8; }
+    .btn-danger { background-color: #dc2626; }
+    /* Divider */
+    .divider {
+      border: none;
+      border-top: 1px solid #e2e8f0;
+      margin: 28px 0;
+    }
+    /* Info box */
+    .info-box {
+      background-color: #f8fafc;
+      border: 1px solid #e2e8f0;
+      border-radius: 8px;
+      padding: 16px 20px;
+      margin: 20px 0;
+      font-size: 13px;
+      color: #64748b;
+      line-height: 1.6;
+    }
+    .info-box strong { color: #334155; }
+    /* Warning box */
+    .warning-box {
+      background-color: #fffbeb;
+      border: 1px solid #fcd34d;
+      border-radius: 8px;
+      padding: 14px 18px;
+      margin: 20px 0;
+      font-size: 13px;
+      color: #92400e;
+      line-height: 1.6;
+    }
+    /* Fallback link */
+    .fallback {
+      font-size: 12px;
+      color: #94a3b8;
+      line-height: 1.7;
+      word-break: break-all;
+    }
+    .fallback a { color: #3b82f6; text-decoration: underline; }
+    /* Footer */
+    .footer {
+      text-align: center;
+      margin-top: 28px;
+      font-size: 12px;
+      color: #94a3b8;
+      line-height: 1.8;
+    }
+    .footer a { color: #64748b; text-decoration: none; }
+    @media (max-width: 600px) {
+      .card { padding: 28px 20px; }
+    }
+  </style>
+</head>
+<body>
+  <div class="wrapper">
+    <div class="container">
+      <!-- Header -->
+      <div class="header">
+        <div class="logo">U</div>
+        <div class="brand-name">{{appName}}</div>
+      </div>
+
+      <!-- Card -->
+      <div class="card">
+        {{{body}}}
+      </div>
+
+      <!-- Footer -->
+      <div class="footer">
+        <p>© {{year}} {{appName}}. All rights reserved.</p>
+        <p style="margin-top:6px;">
+          This email was sent to <strong>{{recipientEmail}}</strong>.<br/>
+          If you did not request this, you can safely ignore it.
+        </p>
+      </div>
+    </div>
+  </div>
+</body>
+</html>

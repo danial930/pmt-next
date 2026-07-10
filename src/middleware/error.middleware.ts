@@ -4,7 +4,7 @@ import { ApiResponse } from "@/core/response/api-response";
 import { ApiError } from "@/core/response/api-error";
 import { logger } from "@/lib/logger";
 import { ZodError } from "zod";
-import { Prisma } from "@prisma/client";
+import { PrismaClientKnownRequestError } from "@prisma/client/runtime/client";
 
 type Handler = (req: NextRequest, ctx?: any) => Promise<Response>;
 
@@ -31,7 +31,7 @@ export const withErrorHandler = (handler: Handler): Handler => {
         );
       }
 
-      if (err instanceof Prisma.PrismaClientKnownRequestError) {
+      if (err instanceof PrismaClientKnownRequestError) {
         if (err.code === "P2002") {
           return ApiResponse.error("CONFLICT", "Resource already exists", 409, {
             fields: err.meta?.target,

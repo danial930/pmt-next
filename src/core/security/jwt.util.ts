@@ -11,6 +11,7 @@ export interface AccessTokenPayload extends JwtPayload {
 }
 
 export interface RefreshTokenPayload extends JwtPayload {
+  userId: number;
   sub: string;
   jti: string; // unique token id, maps to RefreshToken.id
 }
@@ -36,5 +37,6 @@ export const verifyAccessToken = (token: string): AccessTokenPayload => {
 };
 
 export const verifyRefreshToken = (token: string): RefreshTokenPayload => {
-  return jwt.verify(token, env.JWT_REFRESH_SECRET) as RefreshTokenPayload;
+  const verified = jwt.verify(token, env.JWT_REFRESH_SECRET) as RefreshTokenPayload;
+  return {...verified, userId: Number(verified.sub)}; // Ensure sub is a number
 };

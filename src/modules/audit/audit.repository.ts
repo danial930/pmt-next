@@ -1,13 +1,14 @@
 // src/modules/audit/audit.repository.ts
 import { prisma } from "@/lib/prisma";
+import { InputJsonValue } from "../../../prisma/generated/internal/prismaNamespace";
 
 interface CreateAuditLogParams {
   entityName: string;
-  entityId: string;
+  entityId: number;
   action: "CREATE" | "UPDATE" | "DELETE";
-  oldValues?: Record<string, unknown> | null;
-  newValues?: Record<string, unknown> | null;
-  performedById?: string | null;
+  oldValues?: InputJsonValue;
+  newValues?: InputJsonValue;
+  performedById?: number | null;
 }
 
 export class AuditRepository {
@@ -25,7 +26,7 @@ export class AuditRepository {
     });
   }
 
-  async findByEntity(entityName: string, entityId: string) {
+  async findByEntity(entityName: string, entityId: number) {
     return prisma.auditLog.findMany({
       where: { entityName, entityId, isActive: true },
       orderBy: { createdAt: "desc" },

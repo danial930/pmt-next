@@ -1,10 +1,10 @@
 // src/modules/user/user.repository.ts
 import { prisma } from "@/lib/prisma";
-import { Prisma } from "@prisma/client";
 import { getSkipTake } from "@/core/pagination/pagination.util";
+import { UserCreateInput, UserUpdateInput, UserWhereInput } from "../../../prisma/generated/models";
 
 export class UserRepository {
-  async findById(id: string) {
+  async findById(id: number) {
     return prisma.user.findUnique({
       where: { id },
       include: {
@@ -17,14 +17,14 @@ export class UserRepository {
     return prisma.user.findUnique({ where: { email } });
   }
 
-  async create(data: Prisma.UserCreateInput) {
+  async create(data: UserCreateInput) {
     return prisma.user.create({
       data,
       include: { userRoles: { include: { role: true } } },
     });
   }
 
-  async update(id: string, data: Prisma.UserUpdateInput) {
+  async update(id: number, data: UserUpdateInput) {
     return prisma.user.update({
       where: { id },
       data,
@@ -34,7 +34,7 @@ export class UserRepository {
     });
   }
 
-  async softDelete(id: string, updatedBy: string) {
+  async softDelete(id: number, updatedBy: number) {
     return prisma.user.update({
       where: { id },
       data: { isActive: false, updatedBy },
@@ -48,11 +48,11 @@ export class UserRepository {
     sortOrder: "asc" | "desc";
     search?: string;
     isActive?: boolean;
-    roleId?: string;
+    roleId?: number;
   }) {
     const { skip, take } = getSkipTake(params.page, params.limit);
 
-    const where: Prisma.UserWhereInput = {
+    const where: UserWhereInput = {
       ...(params.isActive !== undefined && { isActive: params.isActive }),
       ...(params.search && {
         OR: [

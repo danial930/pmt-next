@@ -1,4 +1,5 @@
 // src/modules/audit/audit.service.ts
+import { InputJsonValue } from "../../../prisma/generated/internal/prismaNamespace";
 import { AuditRepository } from "./audit.repository";
 
 export class AuditService {
@@ -6,9 +7,9 @@ export class AuditService {
 
   async logCreate(
     entityName: string,
-    entityId: string,
-    newValues: Record<string, unknown>,
-    userId?: string,
+    entityId: number,
+    newValues:InputJsonValue,
+    userId?: number,
   ) {
     return this.repo.create({
       entityName,
@@ -21,10 +22,10 @@ export class AuditService {
 
   async logUpdate(
     entityName: string,
-    entityId: string,
-    oldValues: Record<string, unknown>,
-    newValues: Record<string, unknown>,
-    userId?: string,
+    entityId: number,
+    oldValues: InputJsonValue,
+    newValues: InputJsonValue,
+    userId?: number,
   ) {
     return this.repo.create({
       entityName,
@@ -38,9 +39,9 @@ export class AuditService {
 
   async logDelete(
     entityName: string,
-    entityId: string,
-    oldValues: Record<string, unknown>,
-    userId?: string,
+    entityId: number,
+    oldValues: InputJsonValue,
+    userId?: number,
   ) {
     return this.repo.create({
       entityName,

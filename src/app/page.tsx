@@ -1,4 +1,4 @@
-import UsersPage from "@/frontend/app/(dashboard)/users/page";
+import UsersPage from "@/app/(dashboard)/users/page";
 
 export default function Home() {
   return (
@@ -9,7 +9,6 @@ export default function Home() {
         <a href="/api/auth/login"
         className="mt-6 text-blue-600 hover:underline text-sm"
       >
-        <UsersPage></UsersPage>
       </a>
     </main>
   );

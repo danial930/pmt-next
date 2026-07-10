@@ -1,0 +1,21 @@
+<h1 class="heading">Account temporarily locked</h1>
+<p class="subheading">
+  Hi <strong>{{firstName}}</strong>, your account has been temporarily locked
+  due to <strong>{{failedAttempts}} failed sign-in attempts</strong>.
+</p>
+
+<div class="info-box">
+  <strong>Locked at:</strong> {{lockedAt}}<br/>
+  <strong>Auto-unlock at:</strong> {{unlocksAt}}<br/>
+  <strong>IP Address:</strong> {{ipAddress}}
+</div>
+
+<div class="warning-box">
+  <strong>Was this not you?</strong><br/>
+  Someone may be trying to access your account.
+  <a href="{{resetUrl}}" style="color:#92400e;font-weight:600;">Reset your password</a> immediately.
+</div>
+
+<div class="btn-wrapper">
+  <a href="{{resetUrl}}" class="btn btn-danger">Reset My Password</a>
+</div>

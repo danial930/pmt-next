@@ -3,31 +3,47 @@ import nodemailer, { Transporter } from 'nodemailer';
 import { env } from '@/config/env';
 import { logger } from '@/lib/logger';
 
-// ─── Singleton transporter ────────────────────────────────────────────────────
-
 let _transporter: Transporter | null = null;
 
 function getTransporter(): Transporter {
   if (_transporter) return _transporter;
 
+  const isProd = env.NODE_ENV === 'production';
+
   _transporter = nodemailer.createTransport({
     host: env.SMTP_HOST,
     port: env.SMTP_PORT,
+
+    // false = STARTTLS on port 587 (starts plain, upgrades to encrypted)
+    // true  = immediate SSL on port 465
+    // We use 587 + STARTTLS as the standard across all environments
     secure: env.SMTP_SECURE,
+
     auth: {
       user: env.SMTP_USER,
       pass: env.SMTP_PASS,
     },
-    // Gmail requires this
+
     tls: {
-      rejectUnauthorized: env.NODE_ENV === 'production',
+      // true in production: reject fake/invalid/expired SSL certificates
+      // false in development: ignore cert issues caused by local proxies or antivirus
+      rejectUnauthorized: isProd,
+
+      // Never negotiate below TLS 1.2 in any environment
+      minVersion: 'TLSv1.2',
     },
+
+    // Never silently fall back to plaintext if STARTTLS upgrade fails
+    // Without this, nodemailer sends credentials unencrypted if TLS negotiation fails
+    requireTLS: true,
+
+    connectionTimeout: 10_000,
+    greetingTimeout: 10_000,
+    socketTimeout: 15_000,
   });
 
   return _transporter;
 }
-
-// ─── Types ────────────────────────────────────────────────────────────────────
 
 export interface SendMailParams {
   to: string | string[];
@@ -37,11 +53,8 @@ export interface SendMailParams {
   replyTo?: string;
 }
 
-// ─── Send ─────────────────────────────────────────────────────────────────────
-
 export async function sendMail(params: SendMailParams): Promise<void> {
   const transporter = getTransporter();
-
   const to = Array.isArray(params.to) ? params.to.join(', ') : params.to;
 
   try {
@@ -58,15 +71,6 @@ export async function sendMail(params: SendMailParams): Promise<void> {
       { messageId: info.messageId, to, subject: params.subject },
       'Email sent',
     );
-
-    // In development, log the Nodemailer preview URL if using Ethereal
-    if (env.NODE_ENV === 'development' && info.messageId) {
-      const previewUrl = nodemailer.getTestMessageUrl(info);
-      if (previewUrl) {
-        logger.info({ previewUrl }, '📧 Preview email');
-        console.log('\n📧 Email Preview URL:', previewUrl, '\n');
-      }
-    }
   } catch (err: any) {
     logger.error(
       { err: err.message, code: err.code, to, subject: params.subject },
@@ -76,20 +80,16 @@ export async function sendMail(params: SendMailParams): Promise<void> {
   }
 }
 
-// ─── Health check ─────────────────────────────────────────────────────────────
-
 export async function verifyMailer(): Promise<boolean> {
   try {
     await getTransporter().verify();
-    logger.info('SMTP connection verified ✓');
+    logger.info('SMTP connection verified');
     return true;
   } catch (err: any) {
     logger.error({ err: err.message }, 'SMTP connection failed');
     return false;
   }
 }
-
-// ─── Utility ──────────────────────────────────────────────────────────────────
 
 function stripHtml(html: string): string {
   return html

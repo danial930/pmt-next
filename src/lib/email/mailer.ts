@@ -10,37 +10,43 @@ function getTransporter(): Transporter {
 
   const isProd = env.NODE_ENV === 'production';
 
-  _transporter = nodemailer.createTransport({
-    host: env.SMTP_HOST,
-    port: env.SMTP_PORT,
+//   _transporter = nodemailer.createTransport({
+//   host: env.SMTP_HOST,
+//   port: env.SMTP_PORT,
+//   secure: false,   // must be false for port 587
+//   auth: {
+//     user: env.SMTP_USER,
+//     pass: env.SMTP_PASS,
+//   },
+//   tls: {
+//     rejectUnauthorized: false,  // fixes SSL validation in dev
+//     minVersion: 'TLSv1.2',
+//   },
+//   requireTLS: true,            // force STARTTLS upgrade
+//   connectionTimeout: 10000,
+//   greetingTimeout: 10000,
+//   socketTimeout: 15000,
+// });
 
-    // false = STARTTLS on port 587 (starts plain, upgrades to encrypted)
-    // true  = immediate SSL on port 465
-    // We use 587 + STARTTLS as the standard across all environments
-    secure: env.SMTP_SECURE,
-
-    auth: {
-      user: env.SMTP_USER,
-      pass: env.SMTP_PASS,
-    },
-
-    tls: {
-      // true in production: reject fake/invalid/expired SSL certificates
-      // false in development: ignore cert issues caused by local proxies or antivirus
-      rejectUnauthorized: isProd,
-
-      // Never negotiate below TLS 1.2 in any environment
+ _transporter = nodemailer.createTransport({
+  host: env.SMTP_HOST,
+  port: env.SMTP_PORT,
+  secure: env.SMTP_SECURE,   // ← uses port 465 with immediate SSL, NOT port 587 + STARTTLS
+  auth: {
+    user: env.SMTP_USER,
+    pass: env.SMTP_PASS,
+  },
+  tls: {
+      rejectUnauthorized: true,    // always verify certs in staging/prod
       minVersion: 'TLSv1.2',
     },
-
-    // Never silently fall back to plaintext if STARTTLS upgrade fails
-    // Without this, nodemailer sends credentials unencrypted if TLS negotiation fails
     requireTLS: true,
-
+    pool: true,
+    maxConnections: 5,
     connectionTimeout: 10_000,
     greetingTimeout: 10_000,
     socketTimeout: 15_000,
-  });
+});
 
   return _transporter;
 }

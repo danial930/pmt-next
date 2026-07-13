@@ -28,6 +28,9 @@ model User {
   userRoles     UserRole[]
   refreshTokens RefreshToken[]
   auditLogs     AuditLog[]    @relation("AuditPerformedBy")
+  userPreference   UserPreference?
+userMenuAccess   UserMenuAccess[]
+userQuickLinks   UserQuickLink[]
 
   isActive  Boolean   @default(true)
   createdAt DateTime  @default(now())
@@ -47,6 +50,7 @@ model Role {
 
   rolePermissions RolePermission[]
   userRoles       UserRole[]
+  menuPermissions  MenuPermission[]
 
   isActive  Boolean  @default(true)
   createdAt DateTime @default(now())
@@ -66,6 +70,7 @@ model Permission {
   description String?
 
   rolePermissions RolePermission[]
+  menuPermissions  MenuPermission[]
 
   isActive  Boolean  @default(true)
   createdAt DateTime @default(now())
@@ -161,4 +166,124 @@ model AuditLog {
   @@index([performedById])
   @@index([createdAt])
   @@map("audit_logs")
+}
+
+model Menu {
+  id          Int   @id @default(autoincrement())
+  key         String   @unique  // e.g. "user-management"
+  label       String            // e.g. "User Management"
+  icon        String?           // e.g. "Users" (lucide icon name)
+  path        String?           // e.g. "/dashboard/users" (null for group headers)
+  parentId    Int?
+  sortOrder   Int      @default(0)
+  target      String   @default("_self")  // "_self" | "_blank"
+  isVisible   Boolean  @default(true)
+  badgeText   String?           // e.g. "New" | "Beta"
+  badgeColor  String?           // e.g. "blue" | "red"
+
+  parent      Menu?    @relation("MenuTree", fields: [parentId], references: [id])
+  children    Menu[]   @relation("MenuTree")
+
+  menuPermissions  MenuPermission[]
+  userMenuAccess   UserMenuAccess[]
+  userQuickLinks   UserQuickLink[]
+
+  isActive  Boolean  @default(true)
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  createdBy String?
+  updatedBy String?
+
+  @@index([parentId])
+  @@index([sortOrder])
+  @@map("menus")
+}
+
+model MenuPermission {
+  id           Int  @id @default(autoincrement())
+  menuId       Int
+  roleId       Int?
+  permissionId Int?
+
+  menu       Menu        @relation(fields: [menuId], references: [id], onDelete: Cascade)
+  role       Role?       @relation(fields: [roleId], references: [id], onDelete: Cascade)
+  permission Permission? @relation(fields: [permissionId], references: [id], onDelete: Cascade)
+
+  isActive  Boolean  @default(true)
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  createdBy String?
+  updatedBy String?
+
+  @@unique([menuId, roleId, permissionId])
+  @@index([menuId])
+  @@index([roleId])
+  @@map("menu_permissions")
+}
+
+model UserMenuAccess {
+  id        Int  @id @default(autoincrement())
+  userId    Int
+  menuId    Int
+  access    String  @default("allow")  // "allow" | "deny"
+
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+  menu Menu @relation(fields: [menuId], references: [id], onDelete: Cascade)
+
+  isActive  Boolean  @default(true)
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  createdBy String?
+  updatedBy String?
+
+  @@unique([userId, menuId])
+  @@index([userId])
+  @@map("user_menu_access")
+}
+
+model UserQuickLink {
+  id        Int  @id @default(autoincrement())
+  userId    Int
+  menuId    Int
+  sortOrder Int    @default(0)
+
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+  menu Menu @relation(fields: [menuId], references: [id], onDelete: Cascade)
+
+  isActive  Boolean  @default(true)
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  createdBy String?
+  updatedBy String?
+
+  @@unique([userId, menuId])
+  @@index([userId])
+  @@map("user_quick_links")
+}
+
+model UserPreference {
+  id     Int @id @default(autoincrement())
+  userId Int @unique
+
+  // Navigation
+  navMode        String  @default("sidebar")  // "sidebar" | "topbar"
+  sidebarCollapsed Boolean @default(false)
+  sidebarWidth    Int     @default(260)
+
+  // Theme
+  theme          String  @default("light")    // "light" | "dark" | "system"
+  accentColor    String  @default("blue")
+
+  // Behaviour
+  expandedMenuKeys String[] @default([])      // which menu groups are open
+
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  isActive  Boolean  @default(true)
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  createdBy String?
+  updatedBy String?
+
+  @@map("user_preferences")
 }

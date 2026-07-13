@@ -14,6 +14,46 @@ const adapter = new PrismaPg({ connectionString: process.env.DATABASE_URL });
 // Pass the adapter instance to PrismaClient
 const prisma = new PrismaClient({ adapter });
 
+
+async function seedMenus() {
+  const menus = [
+    // Top level groups
+    { key: 'dashboard', label: 'Dashboard', icon: 'LayoutDashboard', path: '/dashboard', sortOrder: 0 },
+    { key: 'user-management', label: 'User Management', icon: 'Users', path: null, sortOrder: 1 },
+    { key: 'settings', label: 'Settings', icon: 'Settings', path: null, sortOrder: 2 },
+  ];
+
+  const created: Record<string, number> = {};
+
+  for (const menu of menus) {
+    const m = await prisma.menu.upsert({
+      where: { key: menu.key },
+      update: {},
+      create: menu,
+    });
+    created[menu.key] = m.id;
+  }
+
+  // Children
+  const children = [
+    { key: 'users-list', label: 'All Users', icon: 'Users', path: '/dashboard/users', parentId: created['user-management'], sortOrder: 0 },
+    { key: 'users-roles', label: 'Roles', icon: 'Shield', path: '/dashboard/roles', parentId: created['user-management'], sortOrder: 1 },
+    { key: 'users-permissions', label: 'Permissions', icon: 'Key', path: '/dashboard/permissions', parentId: created['user-management'], sortOrder: 2 },
+    { key: 'settings-profile', label: 'Profile', icon: 'User', path: '/dashboard/settings/profile', parentId: created['settings'], sortOrder: 0 },
+    { key: 'settings-security', label: 'Security', icon: 'Lock', path: '/dashboard/settings/security', parentId: created['settings'], sortOrder: 1 },
+  ];
+
+  for (const child of children) {
+    await prisma.menu.upsert({
+      where: { key: child.key },
+      update: {},
+      create: child,
+    });
+  }
+
+  console.log('Menus seeded');
+}
+
 async function main() {
   // Permissions
   const permissionRecords = await Promise.all(
@@ -88,9 +128,15 @@ async function main() {
   console.log("Seed complete");
 }
 
+
+
 main()
   .catch((e) => {
     console.error(e);
     process.exit(1);
   })
   .finally(() => prisma.$disconnect());
+
+
+
+

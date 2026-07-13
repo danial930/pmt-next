@@ -327,6 +327,9 @@ export type UserWhereInput = {
   userRoles?: Prisma.UserRoleListRelationFilter
   refreshTokens?: Prisma.RefreshTokenListRelationFilter
   auditLogs?: Prisma.AuditLogListRelationFilter
+  userPreference?: Prisma.XOR<Prisma.UserPreferenceNullableScalarRelationFilter, Prisma.UserPreferenceWhereInput> | null
+  userMenuAccess?: Prisma.UserMenuAccessListRelationFilter
+  userQuickLinks?: Prisma.UserQuickLinkListRelationFilter
 }
 
 export type UserOrderByWithRelationInput = {
@@ -350,6 +353,9 @@ export type UserOrderByWithRelationInput = {
   userRoles?: Prisma.UserRoleOrderByRelationAggregateInput
   refreshTokens?: Prisma.RefreshTokenOrderByRelationAggregateInput
   auditLogs?: Prisma.AuditLogOrderByRelationAggregateInput
+  userPreference?: Prisma.UserPreferenceOrderByWithRelationInput
+  userMenuAccess?: Prisma.UserMenuAccessOrderByRelationAggregateInput
+  userQuickLinks?: Prisma.UserQuickLinkOrderByRelationAggregateInput
 }
 
 export type UserWhereUniqueInput = Prisma.AtLeast<{
@@ -376,6 +382,9 @@ export type UserWhereUniqueInput = Prisma.AtLeast<{
   userRoles?: Prisma.UserRoleListRelationFilter
   refreshTokens?: Prisma.RefreshTokenListRelationFilter
   auditLogs?: Prisma.AuditLogListRelationFilter
+  userPreference?: Prisma.XOR<Prisma.UserPreferenceNullableScalarRelationFilter, Prisma.UserPreferenceWhereInput> | null
+  userMenuAccess?: Prisma.UserMenuAccessListRelationFilter
+  userQuickLinks?: Prisma.UserQuickLinkListRelationFilter
 }, "id" | "email">
 
 export type UserOrderByWithAggregationInput = {
@@ -446,6 +455,9 @@ export type UserCreateInput = {
   userRoles?: Prisma.UserRoleCreateNestedManyWithoutUserInput
   refreshTokens?: Prisma.RefreshTokenCreateNestedManyWithoutUserInput
   auditLogs?: Prisma.AuditLogCreateNestedManyWithoutPerformedByInput
+  userPreference?: Prisma.UserPreferenceCreateNestedOneWithoutUserInput
+  userMenuAccess?: Prisma.UserMenuAccessCreateNestedManyWithoutUserInput
+  userQuickLinks?: Prisma.UserQuickLinkCreateNestedManyWithoutUserInput
 }
 
 export type UserUncheckedCreateInput = {
@@ -469,6 +481,9 @@ export type UserUncheckedCreateInput = {
   userRoles?: Prisma.UserRoleUncheckedCreateNestedManyWithoutUserInput
   refreshTokens?: Prisma.RefreshTokenUncheckedCreateNestedManyWithoutUserInput
   auditLogs?: Prisma.AuditLogUncheckedCreateNestedManyWithoutPerformedByInput
+  userPreference?: Prisma.UserPreferenceUncheckedCreateNestedOneWithoutUserInput
+  userMenuAccess?: Prisma.UserMenuAccessUncheckedCreateNestedManyWithoutUserInput
+  userQuickLinks?: Prisma.UserQuickLinkUncheckedCreateNestedManyWithoutUserInput
 }
 
 export type UserUpdateInput = {
@@ -491,6 +506,9 @@ export type UserUpdateInput = {
   userRoles?: Prisma.UserRoleUpdateManyWithoutUserNestedInput
   refreshTokens?: Prisma.RefreshTokenUpdateManyWithoutUserNestedInput
   auditLogs?: Prisma.AuditLogUpdateManyWithoutPerformedByNestedInput
+  userPreference?: Prisma.UserPreferenceUpdateOneWithoutUserNestedInput
+  userMenuAccess?: Prisma.UserMenuAccessUpdateManyWithoutUserNestedInput
+  userQuickLinks?: Prisma.UserQuickLinkUpdateManyWithoutUserNestedInput
 }
 
 export type UserUncheckedUpdateInput = {
@@ -514,6 +532,9 @@ export type UserUncheckedUpdateInput = {
   userRoles?: Prisma.UserRoleUncheckedUpdateManyWithoutUserNestedInput
   refreshTokens?: Prisma.RefreshTokenUncheckedUpdateManyWithoutUserNestedInput
   auditLogs?: Prisma.AuditLogUncheckedUpdateManyWithoutPerformedByNestedInput
+  userPreference?: Prisma.UserPreferenceUncheckedUpdateOneWithoutUserNestedInput
+  userMenuAccess?: Prisma.UserMenuAccessUncheckedUpdateManyWithoutUserNestedInput
+  userQuickLinks?: Prisma.UserQuickLinkUncheckedUpdateManyWithoutUserNestedInput
 }
 
 export type UserCreateManyInput = {
@@ -739,6 +760,48 @@ export type UserUpdateOneWithoutAuditLogsNestedInput = {
   update?: Prisma.XOR<Prisma.XOR<Prisma.UserUpdateToOneWithWhereWithoutAuditLogsInput, Prisma.UserUpdateWithoutAuditLogsInput>, Prisma.UserUncheckedUpdateWithoutAuditLogsInput>
 }
 
+export type UserCreateNestedOneWithoutUserMenuAccessInput = {
+  create?: Prisma.XOR<Prisma.UserCreateWithoutUserMenuAccessInput, Prisma.UserUncheckedCreateWithoutUserMenuAccessInput>
+  connectOrCreate?: Prisma.UserCreateOrConnectWithoutUserMenuAccessInput
+  connect?: Prisma.UserWhereUniqueInput
+}
+
+export type UserUpdateOneRequiredWithoutUserMenuAccessNestedInput = {
+  create?: Prisma.XOR<Prisma.UserCreateWithoutUserMenuAccessInput, Prisma.UserUncheckedCreateWithoutUserMenuAccessInput>
+  connectOrCreate?: Prisma.UserCreateOrConnectWithoutUserMenuAccessInput
+  upsert?: Prisma.UserUpsertWithoutUserMenuAccessInput
+  connect?: Prisma.UserWhereUniqueInput
+  update?: Prisma.XOR<Prisma.XOR<Prisma.UserUpdateToOneWithWhereWithoutUserMenuAccessInput, Prisma.UserUpdateWithoutUserMenuAccessInput>, Prisma.UserUncheckedUpdateWithoutUserMenuAccessInput>
+}
+
+export type UserCreateNestedOneWithoutUserQuickLinksInput = {
+  create?: Prisma.XOR<Prisma.UserCreateWithoutUserQuickLinksInput, Prisma.UserUncheckedCreateWithoutUserQuickLinksInput>
+  connectOrCreate?: Prisma.UserCreateOrConnectWithoutUserQuickLinksInput
+  connect?: Prisma.UserWhereUniqueInput
+}
+
+export type UserUpdateOneRequiredWithoutUserQuickLinksNestedInput = {
+  create?: Prisma.XOR<Prisma.UserCreateWithoutUserQuickLinksInput, Prisma.UserUncheckedCreateWithoutUserQuickLinksInput>
+  connectOrCreate?: Prisma.UserCreateOrConnectWithoutUserQuickLinksInput
+  upsert?: Prisma.UserUpsertWithoutUserQuickLinksInput
+  connect?: Prisma.UserWhereUniqueInput
+  update?: Prisma.XOR<Prisma.XOR<Prisma.UserUpdateToOneWithWhereWithoutUserQuickLinksInput, Prisma.UserUpdateWithoutUserQuickLinksInput>, Prisma.UserUncheckedUpdateWithoutUserQuickLinksInput>
+}
+
+export type UserCreateNestedOneWithoutUserPreferenceInput = {
+  create?: Prisma.XOR<Prisma.UserCreateWithoutUserPreferenceInput, Prisma.UserUncheckedCreateWithoutUserPreferenceInput>
+  connectOrCreate?: Prisma.UserCreateOrConnectWithoutUserPreferenceInput
+  connect?: Prisma.UserWhereUniqueInput
+}
+
+export type UserUpdateOneRequiredWithoutUserPreferenceNestedInput = {
+  create?: Prisma.XOR<Prisma.UserCreateWithoutUserPreferenceInput, Prisma.UserUncheckedCreateWithoutUserPreferenceInput>
+  connectOrCreate?: Prisma.UserCreateOrConnectWithoutUserPreferenceInput
+  upsert?: Prisma.UserUpsertWithoutUserPreferenceInput
+  connect?: Prisma.UserWhereUniqueInput
+  update?: Prisma.XOR<Prisma.XOR<Prisma.UserUpdateToOneWithWhereWithoutUserPreferenceInput, Prisma.UserUpdateWithoutUserPreferenceInput>, Prisma.UserUncheckedUpdateWithoutUserPreferenceInput>
+}
+
 export type UserCreateWithoutUserRolesInput = {
   email: string
   password: string
@@ -758,6 +821,9 @@ export type UserCreateWithoutUserRolesInput = {
   updatedBy?: number | null
   refreshTokens?: Prisma.RefreshTokenCreateNestedManyWithoutUserInput
   auditLogs?: Prisma.AuditLogCreateNestedManyWithoutPerformedByInput
+  userPreference?: Prisma.UserPreferenceCreateNestedOneWithoutUserInput
+  userMenuAccess?: Prisma.UserMenuAccessCreateNestedManyWithoutUserInput
+  userQuickLinks?: Prisma.UserQuickLinkCreateNestedManyWithoutUserInput
 }
 
 export type UserUncheckedCreateWithoutUserRolesInput = {
@@ -780,6 +846,9 @@ export type UserUncheckedCreateWithoutUserRolesInput = {
   updatedBy?: number | null
   refreshTokens?: Prisma.RefreshTokenUncheckedCreateNestedManyWithoutUserInput
   auditLogs?: Prisma.AuditLogUncheckedCreateNestedManyWithoutPerformedByInput
+  userPreference?: Prisma.UserPreferenceUncheckedCreateNestedOneWithoutUserInput
+  userMenuAccess?: Prisma.UserMenuAccessUncheckedCreateNestedManyWithoutUserInput
+  userQuickLinks?: Prisma.UserQuickLinkUncheckedCreateNestedManyWithoutUserInput
 }
 
 export type UserCreateOrConnectWithoutUserRolesInput = {
@@ -817,6 +886,9 @@ export type UserUpdateWithoutUserRolesInput = {
   updatedBy?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   refreshTokens?: Prisma.RefreshTokenUpdateManyWithoutUserNestedInput
   auditLogs?: Prisma.AuditLogUpdateManyWithoutPerformedByNestedInput
+  userPreference?: Prisma.UserPreferenceUpdateOneWithoutUserNestedInput
+  userMenuAccess?: Prisma.UserMenuAccessUpdateManyWithoutUserNestedInput
+  userQuickLinks?: Prisma.UserQuickLinkUpdateManyWithoutUserNestedInput
 }
 
 export type UserUncheckedUpdateWithoutUserRolesInput = {
@@ -839,6 +911,9 @@ export type UserUncheckedUpdateWithoutUserRolesInput = {
   updatedBy?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   refreshTokens?: Prisma.RefreshTokenUncheckedUpdateManyWithoutUserNestedInput
   auditLogs?: Prisma.AuditLogUncheckedUpdateManyWithoutPerformedByNestedInput
+  userPreference?: Prisma.UserPreferenceUncheckedUpdateOneWithoutUserNestedInput
+  userMenuAccess?: Prisma.UserMenuAccessUncheckedUpdateManyWithoutUserNestedInput
+  userQuickLinks?: Prisma.UserQuickLinkUncheckedUpdateManyWithoutUserNestedInput
 }
 
 export type UserCreateWithoutRefreshTokensInput = {
@@ -860,6 +935,9 @@ export type UserCreateWithoutRefreshTokensInput = {
   updatedBy?: number | null
   userRoles?: Prisma.UserRoleCreateNestedManyWithoutUserInput
   auditLogs?: Prisma.AuditLogCreateNestedManyWithoutPerformedByInput
+  userPreference?: Prisma.UserPreferenceCreateNestedOneWithoutUserInput
+  userMenuAccess?: Prisma.UserMenuAccessCreateNestedManyWithoutUserInput
+  userQuickLinks?: Prisma.UserQuickLinkCreateNestedManyWithoutUserInput
 }
 
 export type UserUncheckedCreateWithoutRefreshTokensInput = {
@@ -882,6 +960,9 @@ export type UserUncheckedCreateWithoutRefreshTokensInput = {
   updatedBy?: number | null
   userRoles?: Prisma.UserRoleUncheckedCreateNestedManyWithoutUserInput
   auditLogs?: Prisma.AuditLogUncheckedCreateNestedManyWithoutPerformedByInput
+  userPreference?: Prisma.UserPreferenceUncheckedCreateNestedOneWithoutUserInput
+  userMenuAccess?: Prisma.UserMenuAccessUncheckedCreateNestedManyWithoutUserInput
+  userQuickLinks?: Prisma.UserQuickLinkUncheckedCreateNestedManyWithoutUserInput
 }
 
 export type UserCreateOrConnectWithoutRefreshTokensInput = {
@@ -919,6 +1000,9 @@ export type UserUpdateWithoutRefreshTokensInput = {
   updatedBy?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   userRoles?: Prisma.UserRoleUpdateManyWithoutUserNestedInput
   auditLogs?: Prisma.AuditLogUpdateManyWithoutPerformedByNestedInput
+  userPreference?: Prisma.UserPreferenceUpdateOneWithoutUserNestedInput
+  userMenuAccess?: Prisma.UserMenuAccessUpdateManyWithoutUserNestedInput
+  userQuickLinks?: Prisma.UserQuickLinkUpdateManyWithoutUserNestedInput
 }
 
 export type UserUncheckedUpdateWithoutRefreshTokensInput = {
@@ -941,6 +1025,9 @@ export type UserUncheckedUpdateWithoutRefreshTokensInput = {
   updatedBy?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   userRoles?: Prisma.UserRoleUncheckedUpdateManyWithoutUserNestedInput
   auditLogs?: Prisma.AuditLogUncheckedUpdateManyWithoutPerformedByNestedInput
+  userPreference?: Prisma.UserPreferenceUncheckedUpdateOneWithoutUserNestedInput
+  userMenuAccess?: Prisma.UserMenuAccessUncheckedUpdateManyWithoutUserNestedInput
+  userQuickLinks?: Prisma.UserQuickLinkUncheckedUpdateManyWithoutUserNestedInput
 }
 
 export type UserCreateWithoutAuditLogsInput = {
@@ -962,6 +1049,9 @@ export type UserCreateWithoutAuditLogsInput = {
   updatedBy?: number | null
   userRoles?: Prisma.UserRoleCreateNestedManyWithoutUserInput
   refreshTokens?: Prisma.RefreshTokenCreateNestedManyWithoutUserInput
+  userPreference?: Prisma.UserPreferenceCreateNestedOneWithoutUserInput
+  userMenuAccess?: Prisma.UserMenuAccessCreateNestedManyWithoutUserInput
+  userQuickLinks?: Prisma.UserQuickLinkCreateNestedManyWithoutUserInput
 }
 
 export type UserUncheckedCreateWithoutAuditLogsInput = {
@@ -984,6 +1074,9 @@ export type UserUncheckedCreateWithoutAuditLogsInput = {
   updatedBy?: number | null
   userRoles?: Prisma.UserRoleUncheckedCreateNestedManyWithoutUserInput
   refreshTokens?: Prisma.RefreshTokenUncheckedCreateNestedManyWithoutUserInput
+  userPreference?: Prisma.UserPreferenceUncheckedCreateNestedOneWithoutUserInput
+  userMenuAccess?: Prisma.UserMenuAccessUncheckedCreateNestedManyWithoutUserInput
+  userQuickLinks?: Prisma.UserQuickLinkUncheckedCreateNestedManyWithoutUserInput
 }
 
 export type UserCreateOrConnectWithoutAuditLogsInput = {
@@ -1021,6 +1114,9 @@ export type UserUpdateWithoutAuditLogsInput = {
   updatedBy?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   userRoles?: Prisma.UserRoleUpdateManyWithoutUserNestedInput
   refreshTokens?: Prisma.RefreshTokenUpdateManyWithoutUserNestedInput
+  userPreference?: Prisma.UserPreferenceUpdateOneWithoutUserNestedInput
+  userMenuAccess?: Prisma.UserMenuAccessUpdateManyWithoutUserNestedInput
+  userQuickLinks?: Prisma.UserQuickLinkUpdateManyWithoutUserNestedInput
 }
 
 export type UserUncheckedUpdateWithoutAuditLogsInput = {
@@ -1043,6 +1139,351 @@ export type UserUncheckedUpdateWithoutAuditLogsInput = {
   updatedBy?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   userRoles?: Prisma.UserRoleUncheckedUpdateManyWithoutUserNestedInput
   refreshTokens?: Prisma.RefreshTokenUncheckedUpdateManyWithoutUserNestedInput
+  userPreference?: Prisma.UserPreferenceUncheckedUpdateOneWithoutUserNestedInput
+  userMenuAccess?: Prisma.UserMenuAccessUncheckedUpdateManyWithoutUserNestedInput
+  userQuickLinks?: Prisma.UserQuickLinkUncheckedUpdateManyWithoutUserNestedInput
+}
+
+export type UserCreateWithoutUserMenuAccessInput = {
+  email: string
+  password: string
+  firstName: string
+  lastName: string
+  isEmailVerified?: boolean
+  emailVerifyToken?: string | null
+  emailVerifyExpiry?: Date | string | null
+  resetToken?: string | null
+  resetTokenExpiry?: Date | string | null
+  failedLoginCount?: number
+  lockedUntil?: Date | string | null
+  isActive?: boolean
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  createdBy?: number | null
+  updatedBy?: number | null
+  userRoles?: Prisma.UserRoleCreateNestedManyWithoutUserInput
+  refreshTokens?: Prisma.RefreshTokenCreateNestedManyWithoutUserInput
+  auditLogs?: Prisma.AuditLogCreateNestedManyWithoutPerformedByInput
+  userPreference?: Prisma.UserPreferenceCreateNestedOneWithoutUserInput
+  userQuickLinks?: Prisma.UserQuickLinkCreateNestedManyWithoutUserInput
+}
+
+export type UserUncheckedCreateWithoutUserMenuAccessInput = {
+  id?: number
+  email: string
+  password: string
+  firstName: string
+  lastName: string
+  isEmailVerified?: boolean
+  emailVerifyToken?: string | null
+  emailVerifyExpiry?: Date | string | null
+  resetToken?: string | null
+  resetTokenExpiry?: Date | string | null
+  failedLoginCount?: number
+  lockedUntil?: Date | string | null
+  isActive?: boolean
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  createdBy?: number | null
+  updatedBy?: number | null
+  userRoles?: Prisma.UserRoleUncheckedCreateNestedManyWithoutUserInput
+  refreshTokens?: Prisma.RefreshTokenUncheckedCreateNestedManyWithoutUserInput
+  auditLogs?: Prisma.AuditLogUncheckedCreateNestedManyWithoutPerformedByInput
+  userPreference?: Prisma.UserPreferenceUncheckedCreateNestedOneWithoutUserInput
+  userQuickLinks?: Prisma.UserQuickLinkUncheckedCreateNestedManyWithoutUserInput
+}
+
+export type UserCreateOrConnectWithoutUserMenuAccessInput = {
+  where: Prisma.UserWhereUniqueInput
+  create: Prisma.XOR<Prisma.UserCreateWithoutUserMenuAccessInput, Prisma.UserUncheckedCreateWithoutUserMenuAccessInput>
+}
+
+export type UserUpsertWithoutUserMenuAccessInput = {
+  update: Prisma.XOR<Prisma.UserUpdateWithoutUserMenuAccessInput, Prisma.UserUncheckedUpdateWithoutUserMenuAccessInput>
+  create: Prisma.XOR<Prisma.UserCreateWithoutUserMenuAccessInput, Prisma.UserUncheckedCreateWithoutUserMenuAccessInput>
+  where?: Prisma.UserWhereInput
+}
+
+export type UserUpdateToOneWithWhereWithoutUserMenuAccessInput = {
+  where?: Prisma.UserWhereInput
+  data: Prisma.XOR<Prisma.UserUpdateWithoutUserMenuAccessInput, Prisma.UserUncheckedUpdateWithoutUserMenuAccessInput>
+}
+
+export type UserUpdateWithoutUserMenuAccessInput = {
+  email?: Prisma.StringFieldUpdateOperationsInput | string
+  password?: Prisma.StringFieldUpdateOperationsInput | string
+  firstName?: Prisma.StringFieldUpdateOperationsInput | string
+  lastName?: Prisma.StringFieldUpdateOperationsInput | string
+  isEmailVerified?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  emailVerifyToken?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  emailVerifyExpiry?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  resetToken?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  resetTokenExpiry?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  failedLoginCount?: Prisma.IntFieldUpdateOperationsInput | number
+  lockedUntil?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  isActive?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  createdBy?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  updatedBy?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  userRoles?: Prisma.UserRoleUpdateManyWithoutUserNestedInput
+  refreshTokens?: Prisma.RefreshTokenUpdateManyWithoutUserNestedInput
+  auditLogs?: Prisma.AuditLogUpdateManyWithoutPerformedByNestedInput
+  userPreference?: Prisma.UserPreferenceUpdateOneWithoutUserNestedInput
+  userQuickLinks?: Prisma.UserQuickLinkUpdateManyWithoutUserNestedInput
+}
+
+export type UserUncheckedUpdateWithoutUserMenuAccessInput = {
+  id?: Prisma.IntFieldUpdateOperationsInput | number
+  email?: Prisma.StringFieldUpdateOperationsInput | string
+  password?: Prisma.StringFieldUpdateOperationsInput | string
+  firstName?: Prisma.StringFieldUpdateOperationsInput | string
+  lastName?: Prisma.StringFieldUpdateOperationsInput | string
+  isEmailVerified?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  emailVerifyToken?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  emailVerifyExpiry?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  resetToken?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  resetTokenExpiry?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  failedLoginCount?: Prisma.IntFieldUpdateOperationsInput | number
+  lockedUntil?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  isActive?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  createdBy?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  updatedBy?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  userRoles?: Prisma.UserRoleUncheckedUpdateManyWithoutUserNestedInput
+  refreshTokens?: Prisma.RefreshTokenUncheckedUpdateManyWithoutUserNestedInput
+  auditLogs?: Prisma.AuditLogUncheckedUpdateManyWithoutPerformedByNestedInput
+  userPreference?: Prisma.UserPreferenceUncheckedUpdateOneWithoutUserNestedInput
+  userQuickLinks?: Prisma.UserQuickLinkUncheckedUpdateManyWithoutUserNestedInput
+}
+
+export type UserCreateWithoutUserQuickLinksInput = {
+  email: string
+  password: string
+  firstName: string
+  lastName: string
+  isEmailVerified?: boolean
+  emailVerifyToken?: string | null
+  emailVerifyExpiry?: Date | string | null
+  resetToken?: string | null
+  resetTokenExpiry?: Date | string | null
+  failedLoginCount?: number
+  lockedUntil?: Date | string | null
+  isActive?: boolean
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  createdBy?: number | null
+  updatedBy?: number | null
+  userRoles?: Prisma.UserRoleCreateNestedManyWithoutUserInput
+  refreshTokens?: Prisma.RefreshTokenCreateNestedManyWithoutUserInput
+  auditLogs?: Prisma.AuditLogCreateNestedManyWithoutPerformedByInput
+  userPreference?: Prisma.UserPreferenceCreateNestedOneWithoutUserInput
+  userMenuAccess?: Prisma.UserMenuAccessCreateNestedManyWithoutUserInput
+}
+
+export type UserUncheckedCreateWithoutUserQuickLinksInput = {
+  id?: number
+  email: string
+  password: string
+  firstName: string
+  lastName: string
+  isEmailVerified?: boolean
+  emailVerifyToken?: string | null
+  emailVerifyExpiry?: Date | string | null
+  resetToken?: string | null
+  resetTokenExpiry?: Date | string | null
+  failedLoginCount?: number
+  lockedUntil?: Date | string | null
+  isActive?: boolean
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  createdBy?: number | null
+  updatedBy?: number | null
+  userRoles?: Prisma.UserRoleUncheckedCreateNestedManyWithoutUserInput
+  refreshTokens?: Prisma.RefreshTokenUncheckedCreateNestedManyWithoutUserInput
+  auditLogs?: Prisma.AuditLogUncheckedCreateNestedManyWithoutPerformedByInput
+  userPreference?: Prisma.UserPreferenceUncheckedCreateNestedOneWithoutUserInput
+  userMenuAccess?: Prisma.UserMenuAccessUncheckedCreateNestedManyWithoutUserInput
+}
+
+export type UserCreateOrConnectWithoutUserQuickLinksInput = {
+  where: Prisma.UserWhereUniqueInput
+  create: Prisma.XOR<Prisma.UserCreateWithoutUserQuickLinksInput, Prisma.UserUncheckedCreateWithoutUserQuickLinksInput>
+}
+
+export type UserUpsertWithoutUserQuickLinksInput = {
+  update: Prisma.XOR<Prisma.UserUpdateWithoutUserQuickLinksInput, Prisma.UserUncheckedUpdateWithoutUserQuickLinksInput>
+  create: Prisma.XOR<Prisma.UserCreateWithoutUserQuickLinksInput, Prisma.UserUncheckedCreateWithoutUserQuickLinksInput>
+  where?: Prisma.UserWhereInput
+}
+
+export type UserUpdateToOneWithWhereWithoutUserQuickLinksInput = {
+  where?: Prisma.UserWhereInput
+  data: Prisma.XOR<Prisma.UserUpdateWithoutUserQuickLinksInput, Prisma.UserUncheckedUpdateWithoutUserQuickLinksInput>
+}
+
+export type UserUpdateWithoutUserQuickLinksInput = {
+  email?: Prisma.StringFieldUpdateOperationsInput | string
+  password?: Prisma.StringFieldUpdateOperationsInput | string
+  firstName?: Prisma.StringFieldUpdateOperationsInput | string
+  lastName?: Prisma.StringFieldUpdateOperationsInput | string
+  isEmailVerified?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  emailVerifyToken?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  emailVerifyExpiry?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  resetToken?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  resetTokenExpiry?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  failedLoginCount?: Prisma.IntFieldUpdateOperationsInput | number
+  lockedUntil?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  isActive?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  createdBy?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  updatedBy?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  userRoles?: Prisma.UserRoleUpdateManyWithoutUserNestedInput
+  refreshTokens?: Prisma.RefreshTokenUpdateManyWithoutUserNestedInput
+  auditLogs?: Prisma.AuditLogUpdateManyWithoutPerformedByNestedInput
+  userPreference?: Prisma.UserPreferenceUpdateOneWithoutUserNestedInput
+  userMenuAccess?: Prisma.UserMenuAccessUpdateManyWithoutUserNestedInput
+}
+
+export type UserUncheckedUpdateWithoutUserQuickLinksInput = {
+  id?: Prisma.IntFieldUpdateOperationsInput | number
+  email?: Prisma.StringFieldUpdateOperationsInput | string
+  password?: Prisma.StringFieldUpdateOperationsInput | string
+  firstName?: Prisma.StringFieldUpdateOperationsInput | string
+  lastName?: Prisma.StringFieldUpdateOperationsInput | string
+  isEmailVerified?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  emailVerifyToken?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  emailVerifyExpiry?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  resetToken?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  resetTokenExpiry?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  failedLoginCount?: Prisma.IntFieldUpdateOperationsInput | number
+  lockedUntil?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  isActive?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  createdBy?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  updatedBy?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  userRoles?: Prisma.UserRoleUncheckedUpdateManyWithoutUserNestedInput
+  refreshTokens?: Prisma.RefreshTokenUncheckedUpdateManyWithoutUserNestedInput
+  auditLogs?: Prisma.AuditLogUncheckedUpdateManyWithoutPerformedByNestedInput
+  userPreference?: Prisma.UserPreferenceUncheckedUpdateOneWithoutUserNestedInput
+  userMenuAccess?: Prisma.UserMenuAccessUncheckedUpdateManyWithoutUserNestedInput
+}
+
+export type UserCreateWithoutUserPreferenceInput = {
+  email: string
+  password: string
+  firstName: string
+  lastName: string
+  isEmailVerified?: boolean
+  emailVerifyToken?: string | null
+  emailVerifyExpiry?: Date | string | null
+  resetToken?: string | null
+  resetTokenExpiry?: Date | string | null
+  failedLoginCount?: number
+  lockedUntil?: Date | string | null
+  isActive?: boolean
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  createdBy?: number | null
+  updatedBy?: number | null
+  userRoles?: Prisma.UserRoleCreateNestedManyWithoutUserInput
+  refreshTokens?: Prisma.RefreshTokenCreateNestedManyWithoutUserInput
+  auditLogs?: Prisma.AuditLogCreateNestedManyWithoutPerformedByInput
+  userMenuAccess?: Prisma.UserMenuAccessCreateNestedManyWithoutUserInput
+  userQuickLinks?: Prisma.UserQuickLinkCreateNestedManyWithoutUserInput
+}
+
+export type UserUncheckedCreateWithoutUserPreferenceInput = {
+  id?: number
+  email: string
+  password: string
+  firstName: string
+  lastName: string
+  isEmailVerified?: boolean
+  emailVerifyToken?: string | null
+  emailVerifyExpiry?: Date | string | null
+  resetToken?: string | null
+  resetTokenExpiry?: Date | string | null
+  failedLoginCount?: number
+  lockedUntil?: Date | string | null
+  isActive?: boolean
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  createdBy?: number | null
+  updatedBy?: number | null
+  userRoles?: Prisma.UserRoleUncheckedCreateNestedManyWithoutUserInput
+  refreshTokens?: Prisma.RefreshTokenUncheckedCreateNestedManyWithoutUserInput
+  auditLogs?: Prisma.AuditLogUncheckedCreateNestedManyWithoutPerformedByInput
+  userMenuAccess?: Prisma.UserMenuAccessUncheckedCreateNestedManyWithoutUserInput
+  userQuickLinks?: Prisma.UserQuickLinkUncheckedCreateNestedManyWithoutUserInput
+}
+
+export type UserCreateOrConnectWithoutUserPreferenceInput = {
+  where: Prisma.UserWhereUniqueInput
+  create: Prisma.XOR<Prisma.UserCreateWithoutUserPreferenceInput, Prisma.UserUncheckedCreateWithoutUserPreferenceInput>
+}
+
+export type UserUpsertWithoutUserPreferenceInput = {
+  update: Prisma.XOR<Prisma.UserUpdateWithoutUserPreferenceInput, Prisma.UserUncheckedUpdateWithoutUserPreferenceInput>
+  create: Prisma.XOR<Prisma.UserCreateWithoutUserPreferenceInput, Prisma.UserUncheckedCreateWithoutUserPreferenceInput>
+  where?: Prisma.UserWhereInput
+}
+
+export type UserUpdateToOneWithWhereWithoutUserPreferenceInput = {
+  where?: Prisma.UserWhereInput
+  data: Prisma.XOR<Prisma.UserUpdateWithoutUserPreferenceInput, Prisma.UserUncheckedUpdateWithoutUserPreferenceInput>
+}
+
+export type UserUpdateWithoutUserPreferenceInput = {
+  email?: Prisma.StringFieldUpdateOperationsInput | string
+  password?: Prisma.StringFieldUpdateOperationsInput | string
+  firstName?: Prisma.StringFieldUpdateOperationsInput | string
+  lastName?: Prisma.StringFieldUpdateOperationsInput | string
+  isEmailVerified?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  emailVerifyToken?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  emailVerifyExpiry?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  resetToken?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  resetTokenExpiry?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  failedLoginCount?: Prisma.IntFieldUpdateOperationsInput | number
+  lockedUntil?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  isActive?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  createdBy?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  updatedBy?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  userRoles?: Prisma.UserRoleUpdateManyWithoutUserNestedInput
+  refreshTokens?: Prisma.RefreshTokenUpdateManyWithoutUserNestedInput
+  auditLogs?: Prisma.AuditLogUpdateManyWithoutPerformedByNestedInput
+  userMenuAccess?: Prisma.UserMenuAccessUpdateManyWithoutUserNestedInput
+  userQuickLinks?: Prisma.UserQuickLinkUpdateManyWithoutUserNestedInput
+}
+
+export type UserUncheckedUpdateWithoutUserPreferenceInput = {
+  id?: Prisma.IntFieldUpdateOperationsInput | number
+  email?: Prisma.StringFieldUpdateOperationsInput | string
+  password?: Prisma.StringFieldUpdateOperationsInput | string
+  firstName?: Prisma.StringFieldUpdateOperationsInput | string
+  lastName?: Prisma.StringFieldUpdateOperationsInput | string
+  isEmailVerified?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  emailVerifyToken?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  emailVerifyExpiry?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  resetToken?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  resetTokenExpiry?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  failedLoginCount?: Prisma.IntFieldUpdateOperationsInput | number
+  lockedUntil?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  isActive?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  createdBy?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  updatedBy?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  userRoles?: Prisma.UserRoleUncheckedUpdateManyWithoutUserNestedInput
+  refreshTokens?: Prisma.RefreshTokenUncheckedUpdateManyWithoutUserNestedInput
+  auditLogs?: Prisma.AuditLogUncheckedUpdateManyWithoutPerformedByNestedInput
+  userMenuAccess?: Prisma.UserMenuAccessUncheckedUpdateManyWithoutUserNestedInput
+  userQuickLinks?: Prisma.UserQuickLinkUncheckedUpdateManyWithoutUserNestedInput
 }
 
 
@@ -1054,12 +1495,16 @@ export type UserCountOutputType = {
   userRoles: number
   refreshTokens: number
   auditLogs: number
+  userMenuAccess: number
+  userQuickLinks: number
 }
 
 export type UserCountOutputTypeSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   userRoles?: boolean | UserCountOutputTypeCountUserRolesArgs
   refreshTokens?: boolean | UserCountOutputTypeCountRefreshTokensArgs
   auditLogs?: boolean | UserCountOutputTypeCountAuditLogsArgs
+  userMenuAccess?: boolean | UserCountOutputTypeCountUserMenuAccessArgs
+  userQuickLinks?: boolean | UserCountOutputTypeCountUserQuickLinksArgs
 }
 
 /**
@@ -1093,6 +1538,20 @@ export type UserCountOutputTypeCountAuditLogsArgs<ExtArgs extends runtime.Types.
   where?: Prisma.AuditLogWhereInput
 }
 
+/**
+ * UserCountOutputType without action
+ */
+export type UserCountOutputTypeCountUserMenuAccessArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  where?: Prisma.UserMenuAccessWhereInput
+}
+
+/**
+ * UserCountOutputType without action
+ */
+export type UserCountOutputTypeCountUserQuickLinksArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  where?: Prisma.UserQuickLinkWhereInput
+}
+
 
 export type UserSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
   id?: boolean
@@ -1115,6 +1574,9 @@ export type UserSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = r
   userRoles?: boolean | Prisma.User$userRolesArgs<ExtArgs>
   refreshTokens?: boolean | Prisma.User$refreshTokensArgs<ExtArgs>
   auditLogs?: boolean | Prisma.User$auditLogsArgs<ExtArgs>
+  userPreference?: boolean | Prisma.User$userPreferenceArgs<ExtArgs>
+  userMenuAccess?: boolean | Prisma.User$userMenuAccessArgs<ExtArgs>
+  userQuickLinks?: boolean | Prisma.User$userQuickLinksArgs<ExtArgs>
   _count?: boolean | Prisma.UserCountOutputTypeDefaultArgs<ExtArgs>
 }, ExtArgs["result"]["user"]>
 
@@ -1183,6 +1645,9 @@ export type UserInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = 
   userRoles?: boolean | Prisma.User$userRolesArgs<ExtArgs>
   refreshTokens?: boolean | Prisma.User$refreshTokensArgs<ExtArgs>
   auditLogs?: boolean | Prisma.User$auditLogsArgs<ExtArgs>
+  userPreference?: boolean | Prisma.User$userPreferenceArgs<ExtArgs>
+  userMenuAccess?: boolean | Prisma.User$userMenuAccessArgs<ExtArgs>
+  userQuickLinks?: boolean | Prisma.User$userQuickLinksArgs<ExtArgs>
   _count?: boolean | Prisma.UserCountOutputTypeDefaultArgs<ExtArgs>
 }
 export type UserIncludeCreateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {}
@@ -1194,6 +1659,9 @@ export type $UserPayload<ExtArgs extends runtime.Types.Extensions.InternalArgs =
     userRoles: Prisma.$UserRolePayload<ExtArgs>[]
     refreshTokens: Prisma.$RefreshTokenPayload<ExtArgs>[]
     auditLogs: Prisma.$AuditLogPayload<ExtArgs>[]
+    userPreference: Prisma.$UserPreferencePayload<ExtArgs> | null
+    userMenuAccess: Prisma.$UserMenuAccessPayload<ExtArgs>[]
+    userQuickLinks: Prisma.$UserQuickLinkPayload<ExtArgs>[]
   }
   scalars: runtime.Types.Extensions.GetPayloadResult<{
     id: number
@@ -1610,6 +2078,9 @@ export interface Prisma__UserClient<T, Null = never, ExtArgs extends runtime.Typ
   userRoles<T extends Prisma.User$userRolesArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.User$userRolesArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$UserRolePayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   refreshTokens<T extends Prisma.User$refreshTokensArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.User$refreshTokensArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$RefreshTokenPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   auditLogs<T extends Prisma.User$auditLogsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.User$auditLogsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$AuditLogPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+  userPreference<T extends Prisma.User$userPreferenceArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.User$userPreferenceArgs<ExtArgs>>): Prisma.Prisma__UserPreferenceClient<runtime.Types.Result.GetResult<Prisma.$UserPreferencePayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+  userMenuAccess<T extends Prisma.User$userMenuAccessArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.User$userMenuAccessArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$UserMenuAccessPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+  userQuickLinks<T extends Prisma.User$userQuickLinksArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.User$userQuickLinksArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$UserQuickLinkPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   /**
    * Attaches callbacks for the resolution and/or rejection of the Promise.
    * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -2118,6 +2589,73 @@ export type User$auditLogsArgs<ExtArgs extends runtime.Types.Extensions.Internal
   take?: number
   skip?: number
   distinct?: Prisma.AuditLogScalarFieldEnum | Prisma.AuditLogScalarFieldEnum[]
+}
+
+/**
+ * User.userPreference
+ */
+export type User$userPreferenceArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the UserPreference
+   */
+  select?: Prisma.UserPreferenceSelect<ExtArgs> | null
+  /**
+   * Omit specific fields from the UserPreference
+   */
+  omit?: Prisma.UserPreferenceOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.UserPreferenceInclude<ExtArgs> | null
+  where?: Prisma.UserPreferenceWhereInput
+}
+
+/**
+ * User.userMenuAccess
+ */
+export type User$userMenuAccessArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the UserMenuAccess
+   */
+  select?: Prisma.UserMenuAccessSelect<ExtArgs> | null
+  /**
+   * Omit specific fields from the UserMenuAccess
+   */
+  omit?: Prisma.UserMenuAccessOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.UserMenuAccessInclude<ExtArgs> | null
+  where?: Prisma.UserMenuAccessWhereInput
+  orderBy?: Prisma.UserMenuAccessOrderByWithRelationInput | Prisma.UserMenuAccessOrderByWithRelationInput[]
+  cursor?: Prisma.UserMenuAccessWhereUniqueInput
+  take?: number
+  skip?: number
+  distinct?: Prisma.UserMenuAccessScalarFieldEnum | Prisma.UserMenuAccessScalarFieldEnum[]
+}
+
+/**
+ * User.userQuickLinks
+ */
+export type User$userQuickLinksArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the UserQuickLink
+   */
+  select?: Prisma.UserQuickLinkSelect<ExtArgs> | null
+  /**
+   * Omit specific fields from the UserQuickLink
+   */
+  omit?: Prisma.UserQuickLinkOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.UserQuickLinkInclude<ExtArgs> | null
+  where?: Prisma.UserQuickLinkWhereInput
+  orderBy?: Prisma.UserQuickLinkOrderByWithRelationInput | Prisma.UserQuickLinkOrderByWithRelationInput[]
+  cursor?: Prisma.UserQuickLinkWhereUniqueInput
+  take?: number
+  skip?: number
+  distinct?: Prisma.UserQuickLinkScalarFieldEnum | Prisma.UserQuickLinkScalarFieldEnum[]
 }
 
 /**

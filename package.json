@@ -25,6 +25,7 @@
     "bcryptjs": "^3.0.3",
     "handlebars": "^4.7.9",
     "jsonwebtoken": "^9.0.3",
+    "lucide-react": "^1.24.0",
     "next": "^16.2.9",
     "nodemailer": "^9.0.3",
     "pg": "^8.22.0",

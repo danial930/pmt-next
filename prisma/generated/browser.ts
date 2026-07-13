@@ -52,3 +52,28 @@ export type RefreshToken = Prisma.RefreshTokenModel
  * 
  */
 export type AuditLog = Prisma.AuditLogModel
+/**
+ * Model Menu
+ * 
+ */
+export type Menu = Prisma.MenuModel
+/**
+ * Model MenuPermission
+ * 
+ */
+export type MenuPermission = Prisma.MenuPermissionModel
+/**
+ * Model UserMenuAccess
+ * 
+ */
+export type UserMenuAccess = Prisma.UserMenuAccessModel
+/**
+ * Model UserQuickLink
+ * 
+ */
+export type UserQuickLink = Prisma.UserQuickLinkModel
+/**
+ * Model UserPreference
+ * 
+ */
+export type UserPreference = Prisma.UserPreferenceModel

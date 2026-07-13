@@ -57,7 +57,12 @@ export const ModelName = {
   RolePermission: 'RolePermission',
   UserRole: 'UserRole',
   RefreshToken: 'RefreshToken',
-  AuditLog: 'AuditLog'
+  AuditLog: 'AuditLog',
+  Menu: 'Menu',
+  MenuPermission: 'MenuPermission',
+  UserMenuAccess: 'UserMenuAccess',
+  UserQuickLink: 'UserQuickLink',
+  UserPreference: 'UserPreference'
 } as const
 
 export type ModelName = (typeof ModelName)[keyof typeof ModelName]
@@ -191,6 +196,92 @@ export const AuditLogScalarFieldEnum = {
 } as const
 
 export type AuditLogScalarFieldEnum = (typeof AuditLogScalarFieldEnum)[keyof typeof AuditLogScalarFieldEnum]
+
+
+export const MenuScalarFieldEnum = {
+  id: 'id',
+  key: 'key',
+  label: 'label',
+  icon: 'icon',
+  path: 'path',
+  parentId: 'parentId',
+  sortOrder: 'sortOrder',
+  target: 'target',
+  isVisible: 'isVisible',
+  badgeText: 'badgeText',
+  badgeColor: 'badgeColor',
+  isActive: 'isActive',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt',
+  createdBy: 'createdBy',
+  updatedBy: 'updatedBy'
+} as const
+
+export type MenuScalarFieldEnum = (typeof MenuScalarFieldEnum)[keyof typeof MenuScalarFieldEnum]
+
+
+export const MenuPermissionScalarFieldEnum = {
+  id: 'id',
+  menuId: 'menuId',
+  roleId: 'roleId',
+  permissionId: 'permissionId',
+  isActive: 'isActive',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt',
+  createdBy: 'createdBy',
+  updatedBy: 'updatedBy'
+} as const
+
+export type MenuPermissionScalarFieldEnum = (typeof MenuPermissionScalarFieldEnum)[keyof typeof MenuPermissionScalarFieldEnum]
+
+
+export const UserMenuAccessScalarFieldEnum = {
+  id: 'id',
+  userId: 'userId',
+  menuId: 'menuId',
+  access: 'access',
+  isActive: 'isActive',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt',
+  createdBy: 'createdBy',
+  updatedBy: 'updatedBy'
+} as const
+
+export type UserMenuAccessScalarFieldEnum = (typeof UserMenuAccessScalarFieldEnum)[keyof typeof UserMenuAccessScalarFieldEnum]
+
+
+export const UserQuickLinkScalarFieldEnum = {
+  id: 'id',
+  userId: 'userId',
+  menuId: 'menuId',
+  sortOrder: 'sortOrder',
+  isActive: 'isActive',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt',
+  createdBy: 'createdBy',
+  updatedBy: 'updatedBy'
+} as const
+
+export type UserQuickLinkScalarFieldEnum = (typeof UserQuickLinkScalarFieldEnum)[keyof typeof UserQuickLinkScalarFieldEnum]
+
+
+export const UserPreferenceScalarFieldEnum = {
+  id: 'id',
+  userId: 'userId',
+  navMode: 'navMode',
+  sidebarCollapsed: 'sidebarCollapsed',
+  sidebarWidth: 'sidebarWidth',
+  theme: 'theme',
+  accentColor: 'accentColor',
+  expandedMenuKeys: 'expandedMenuKeys',
+  isActive: 'isActive',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt',
+  createdBy: 'createdBy',
+  updatedBy: 'updatedBy'
+} as const
+
+export type UserPreferenceScalarFieldEnum = (typeof UserPreferenceScalarFieldEnum)[keyof typeof UserPreferenceScalarFieldEnum]
 
 
 export const SortOrder = {

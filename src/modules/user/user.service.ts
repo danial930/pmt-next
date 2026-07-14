@@ -30,7 +30,7 @@ export class UserService {
     };
   }
 
-  async list(query: UserQueryInput, requestingUserId: string) {
+  async list(query: UserQueryInput, requestingUserId: number) {
     const { items, total } = await this.repo.findMany(query);
     return {
       data: items.map((u: any) => this.toListItem(u)),
@@ -38,13 +38,13 @@ export class UserService {
     };
   }
 
-  async getById(id: string) {
+  async getById(id: number) {
     const user = await this.repo.findById(id);
     if (!user) throw ApiError.notFound("User not found");
     return this.toListItem(user);
   }
 
-  async create(input: CreateUserInput, performedById: string) {
+  async create(input: CreateUserInput, performedById: number) {
     const existing = await this.repo.findByEmail(input.email);
     if (existing) throw ApiError.conflict("Email already in use");
 
@@ -82,7 +82,7 @@ export class UserService {
     return this.toListItem(user);
   }
 
-  async update(id: string, input: UpdateUserInput, performedById: string) {
+  async update(id: number, input: UpdateUserInput, performedById: number) {
     const existing = await this.repo.findById(id);
     if (!existing) throw ApiError.notFound("User not found");
 
@@ -117,7 +117,7 @@ export class UserService {
     return this.toListItem(finalUser);
   }
 
-  async delete(id: string, performedById: string) {
+  async delete(id: number, performedById: number) {
     const existing = await this.repo.findById(id);
     if (!existing) throw ApiError.notFound("User not found");
 

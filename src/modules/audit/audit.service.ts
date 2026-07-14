@@ -55,8 +55,8 @@ export class AuditService {
 
 // Sensitive fields excluded from audit storage
 export const sanitizeForAudit = (
-  obj: Record<string, unknown>,
-): Record<string, unknown> => {
+  obj: any,
+): any => {
   const { password, resetToken, emailVerifyToken, ...rest } = obj;
   return rest;
 };

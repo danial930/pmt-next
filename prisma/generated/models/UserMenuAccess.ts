@@ -30,12 +30,16 @@ export type UserMenuAccessAvgAggregateOutputType = {
   id: number | null
   userId: number | null
   menuId: number | null
+  createdBy: number | null
+  updatedBy: number | null
 }
 
 export type UserMenuAccessSumAggregateOutputType = {
   id: number | null
   userId: number | null
   menuId: number | null
+  createdBy: number | null
+  updatedBy: number | null
 }
 
 export type UserMenuAccessMinAggregateOutputType = {
@@ -46,8 +50,8 @@ export type UserMenuAccessMinAggregateOutputType = {
   isActive: boolean | null
   createdAt: Date | null
   updatedAt: Date | null
-  createdBy: string | null
-  updatedBy: string | null
+  createdBy: number | null
+  updatedBy: number | null
 }
 
 export type UserMenuAccessMaxAggregateOutputType = {
@@ -58,8 +62,8 @@ export type UserMenuAccessMaxAggregateOutputType = {
   isActive: boolean | null
   createdAt: Date | null
   updatedAt: Date | null
-  createdBy: string | null
-  updatedBy: string | null
+  createdBy: number | null
+  updatedBy: number | null
 }
 
 export type UserMenuAccessCountAggregateOutputType = {
@@ -80,12 +84,16 @@ export type UserMenuAccessAvgAggregateInputType = {
   id?: true
   userId?: true
   menuId?: true
+  createdBy?: true
+  updatedBy?: true
 }
 
 export type UserMenuAccessSumAggregateInputType = {
   id?: true
   userId?: true
   menuId?: true
+  createdBy?: true
+  updatedBy?: true
 }
 
 export type UserMenuAccessMinAggregateInputType = {
@@ -219,8 +227,8 @@ export type UserMenuAccessGroupByOutputType = {
   isActive: boolean
   createdAt: Date
   updatedAt: Date
-  createdBy: string | null
-  updatedBy: string | null
+  createdBy: number | null
+  updatedBy: number | null
   _count: UserMenuAccessCountAggregateOutputType | null
   _avg: UserMenuAccessAvgAggregateOutputType | null
   _sum: UserMenuAccessSumAggregateOutputType | null
@@ -254,8 +262,8 @@ export type UserMenuAccessWhereInput = {
   isActive?: Prisma.BoolFilter<"UserMenuAccess"> | boolean
   createdAt?: Prisma.DateTimeFilter<"UserMenuAccess"> | Date | string
   updatedAt?: Prisma.DateTimeFilter<"UserMenuAccess"> | Date | string
-  createdBy?: Prisma.StringNullableFilter<"UserMenuAccess"> | string | null
-  updatedBy?: Prisma.StringNullableFilter<"UserMenuAccess"> | string | null
+  createdBy?: Prisma.IntNullableFilter<"UserMenuAccess"> | number | null
+  updatedBy?: Prisma.IntNullableFilter<"UserMenuAccess"> | number | null
   user?: Prisma.XOR<Prisma.UserScalarRelationFilter, Prisma.UserWhereInput>
   menu?: Prisma.XOR<Prisma.MenuScalarRelationFilter, Prisma.MenuWhereInput>
 }
@@ -286,8 +294,8 @@ export type UserMenuAccessWhereUniqueInput = Prisma.AtLeast<{
   isActive?: Prisma.BoolFilter<"UserMenuAccess"> | boolean
   createdAt?: Prisma.DateTimeFilter<"UserMenuAccess"> | Date | string
   updatedAt?: Prisma.DateTimeFilter<"UserMenuAccess"> | Date | string
-  createdBy?: Prisma.StringNullableFilter<"UserMenuAccess"> | string | null
-  updatedBy?: Prisma.StringNullableFilter<"UserMenuAccess"> | string | null
+  createdBy?: Prisma.IntNullableFilter<"UserMenuAccess"> | number | null
+  updatedBy?: Prisma.IntNullableFilter<"UserMenuAccess"> | number | null
   user?: Prisma.XOR<Prisma.UserScalarRelationFilter, Prisma.UserWhereInput>
   menu?: Prisma.XOR<Prisma.MenuScalarRelationFilter, Prisma.MenuWhereInput>
 }, "id" | "userId_menuId">
@@ -320,8 +328,8 @@ export type UserMenuAccessScalarWhereWithAggregatesInput = {
   isActive?: Prisma.BoolWithAggregatesFilter<"UserMenuAccess"> | boolean
   createdAt?: Prisma.DateTimeWithAggregatesFilter<"UserMenuAccess"> | Date | string
   updatedAt?: Prisma.DateTimeWithAggregatesFilter<"UserMenuAccess"> | Date | string
-  createdBy?: Prisma.StringNullableWithAggregatesFilter<"UserMenuAccess"> | string | null
-  updatedBy?: Prisma.StringNullableWithAggregatesFilter<"UserMenuAccess"> | string | null
+  createdBy?: Prisma.IntNullableWithAggregatesFilter<"UserMenuAccess"> | number | null
+  updatedBy?: Prisma.IntNullableWithAggregatesFilter<"UserMenuAccess"> | number | null
 }
 
 export type UserMenuAccessCreateInput = {
@@ -329,8 +337,8 @@ export type UserMenuAccessCreateInput = {
   isActive?: boolean
   createdAt?: Date | string
   updatedAt?: Date | string
-  createdBy?: string | null
-  updatedBy?: string | null
+  createdBy?: number | null
+  updatedBy?: number | null
   user: Prisma.UserCreateNestedOneWithoutUserMenuAccessInput
   menu: Prisma.MenuCreateNestedOneWithoutUserMenuAccessInput
 }
@@ -343,8 +351,8 @@ export type UserMenuAccessUncheckedCreateInput = {
   isActive?: boolean
   createdAt?: Date | string
   updatedAt?: Date | string
-  createdBy?: string | null
-  updatedBy?: string | null
+  createdBy?: number | null
+  updatedBy?: number | null
 }
 
 export type UserMenuAccessUpdateInput = {
@@ -352,8 +360,8 @@ export type UserMenuAccessUpdateInput = {
   isActive?: Prisma.BoolFieldUpdateOperationsInput | boolean
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  createdBy?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  updatedBy?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  createdBy?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  updatedBy?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   user?: Prisma.UserUpdateOneRequiredWithoutUserMenuAccessNestedInput
   menu?: Prisma.MenuUpdateOneRequiredWithoutUserMenuAccessNestedInput
 }
@@ -366,8 +374,8 @@ export type UserMenuAccessUncheckedUpdateInput = {
   isActive?: Prisma.BoolFieldUpdateOperationsInput | boolean
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  createdBy?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  updatedBy?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  createdBy?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  updatedBy?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
 }
 
 export type UserMenuAccessCreateManyInput = {
@@ -378,8 +386,8 @@ export type UserMenuAccessCreateManyInput = {
   isActive?: boolean
   createdAt?: Date | string
   updatedAt?: Date | string
-  createdBy?: string | null
-  updatedBy?: string | null
+  createdBy?: number | null
+  updatedBy?: number | null
 }
 
 export type UserMenuAccessUpdateManyMutationInput = {
@@ -387,8 +395,8 @@ export type UserMenuAccessUpdateManyMutationInput = {
   isActive?: Prisma.BoolFieldUpdateOperationsInput | boolean
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  createdBy?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  updatedBy?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  createdBy?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  updatedBy?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
 }
 
 export type UserMenuAccessUncheckedUpdateManyInput = {
@@ -399,8 +407,8 @@ export type UserMenuAccessUncheckedUpdateManyInput = {
   isActive?: Prisma.BoolFieldUpdateOperationsInput | boolean
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  createdBy?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  updatedBy?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  createdBy?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  updatedBy?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
 }
 
 export type UserMenuAccessListRelationFilter = {
@@ -434,6 +442,8 @@ export type UserMenuAccessAvgOrderByAggregateInput = {
   id?: Prisma.SortOrder
   userId?: Prisma.SortOrder
   menuId?: Prisma.SortOrder
+  createdBy?: Prisma.SortOrder
+  updatedBy?: Prisma.SortOrder
 }
 
 export type UserMenuAccessMaxOrderByAggregateInput = {
@@ -464,6 +474,8 @@ export type UserMenuAccessSumOrderByAggregateInput = {
   id?: Prisma.SortOrder
   userId?: Prisma.SortOrder
   menuId?: Prisma.SortOrder
+  createdBy?: Prisma.SortOrder
+  updatedBy?: Prisma.SortOrder
 }
 
 export type UserMenuAccessCreateNestedManyWithoutUserInput = {
@@ -555,8 +567,8 @@ export type UserMenuAccessCreateWithoutUserInput = {
   isActive?: boolean
   createdAt?: Date | string
   updatedAt?: Date | string
-  createdBy?: string | null
-  updatedBy?: string | null
+  createdBy?: number | null
+  updatedBy?: number | null
   menu: Prisma.MenuCreateNestedOneWithoutUserMenuAccessInput
 }
 
@@ -567,8 +579,8 @@ export type UserMenuAccessUncheckedCreateWithoutUserInput = {
   isActive?: boolean
   createdAt?: Date | string
   updatedAt?: Date | string
-  createdBy?: string | null
-  updatedBy?: string | null
+  createdBy?: number | null
+  updatedBy?: number | null
 }
 
 export type UserMenuAccessCreateOrConnectWithoutUserInput = {
@@ -608,8 +620,8 @@ export type UserMenuAccessScalarWhereInput = {
   isActive?: Prisma.BoolFilter<"UserMenuAccess"> | boolean
   createdAt?: Prisma.DateTimeFilter<"UserMenuAccess"> | Date | string
   updatedAt?: Prisma.DateTimeFilter<"UserMenuAccess"> | Date | string
-  createdBy?: Prisma.StringNullableFilter<"UserMenuAccess"> | string | null
-  updatedBy?: Prisma.StringNullableFilter<"UserMenuAccess"> | string | null
+  createdBy?: Prisma.IntNullableFilter<"UserMenuAccess"> | number | null
+  updatedBy?: Prisma.IntNullableFilter<"UserMenuAccess"> | number | null
 }
 
 export type UserMenuAccessCreateWithoutMenuInput = {
@@ -617,8 +629,8 @@ export type UserMenuAccessCreateWithoutMenuInput = {
   isActive?: boolean
   createdAt?: Date | string
   updatedAt?: Date | string
-  createdBy?: string | null
-  updatedBy?: string | null
+  createdBy?: number | null
+  updatedBy?: number | null
   user: Prisma.UserCreateNestedOneWithoutUserMenuAccessInput
 }
 
@@ -629,8 +641,8 @@ export type UserMenuAccessUncheckedCreateWithoutMenuInput = {
   isActive?: boolean
   createdAt?: Date | string
   updatedAt?: Date | string
-  createdBy?: string | null
-  updatedBy?: string | null
+  createdBy?: number | null
+  updatedBy?: number | null
 }
 
 export type UserMenuAccessCreateOrConnectWithoutMenuInput = {
@@ -666,8 +678,8 @@ export type UserMenuAccessCreateManyUserInput = {
   isActive?: boolean
   createdAt?: Date | string
   updatedAt?: Date | string
-  createdBy?: string | null
-  updatedBy?: string | null
+  createdBy?: number | null
+  updatedBy?: number | null
 }
 
 export type UserMenuAccessUpdateWithoutUserInput = {
@@ -675,8 +687,8 @@ export type UserMenuAccessUpdateWithoutUserInput = {
   isActive?: Prisma.BoolFieldUpdateOperationsInput | boolean
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  createdBy?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  updatedBy?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  createdBy?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  updatedBy?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   menu?: Prisma.MenuUpdateOneRequiredWithoutUserMenuAccessNestedInput
 }
 
@@ -687,8 +699,8 @@ export type UserMenuAccessUncheckedUpdateWithoutUserInput = {
   isActive?: Prisma.BoolFieldUpdateOperationsInput | boolean
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  createdBy?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  updatedBy?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  createdBy?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  updatedBy?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
 }
 
 export type UserMenuAccessUncheckedUpdateManyWithoutUserInput = {
@@ -698,8 +710,8 @@ export type UserMenuAccessUncheckedUpdateManyWithoutUserInput = {
   isActive?: Prisma.BoolFieldUpdateOperationsInput | boolean
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  createdBy?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  updatedBy?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  createdBy?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  updatedBy?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
 }
 
 export type UserMenuAccessCreateManyMenuInput = {
@@ -709,8 +721,8 @@ export type UserMenuAccessCreateManyMenuInput = {
   isActive?: boolean
   createdAt?: Date | string
   updatedAt?: Date | string
-  createdBy?: string | null
-  updatedBy?: string | null
+  createdBy?: number | null
+  updatedBy?: number | null
 }
 
 export type UserMenuAccessUpdateWithoutMenuInput = {
@@ -718,8 +730,8 @@ export type UserMenuAccessUpdateWithoutMenuInput = {
   isActive?: Prisma.BoolFieldUpdateOperationsInput | boolean
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  createdBy?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  updatedBy?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  createdBy?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  updatedBy?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   user?: Prisma.UserUpdateOneRequiredWithoutUserMenuAccessNestedInput
 }
 
@@ -730,8 +742,8 @@ export type UserMenuAccessUncheckedUpdateWithoutMenuInput = {
   isActive?: Prisma.BoolFieldUpdateOperationsInput | boolean
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  createdBy?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  updatedBy?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  createdBy?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  updatedBy?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
 }
 
 export type UserMenuAccessUncheckedUpdateManyWithoutMenuInput = {
@@ -741,8 +753,8 @@ export type UserMenuAccessUncheckedUpdateManyWithoutMenuInput = {
   isActive?: Prisma.BoolFieldUpdateOperationsInput | boolean
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  createdBy?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  updatedBy?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  createdBy?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  updatedBy?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
 }
 
 
@@ -829,8 +841,8 @@ export type $UserMenuAccessPayload<ExtArgs extends runtime.Types.Extensions.Inte
     isActive: boolean
     createdAt: Date
     updatedAt: Date
-    createdBy: string | null
-    updatedBy: string | null
+    createdBy: number | null
+    updatedBy: number | null
   }, ExtArgs["result"]["userMenuAccess"]>
   composites: {}
 }
@@ -1263,8 +1275,8 @@ export interface UserMenuAccessFieldRefs {
   readonly isActive: Prisma.FieldRef<"UserMenuAccess", 'Boolean'>
   readonly createdAt: Prisma.FieldRef<"UserMenuAccess", 'DateTime'>
   readonly updatedAt: Prisma.FieldRef<"UserMenuAccess", 'DateTime'>
-  readonly createdBy: Prisma.FieldRef<"UserMenuAccess", 'String'>
-  readonly updatedBy: Prisma.FieldRef<"UserMenuAccess", 'String'>
+  readonly createdBy: Prisma.FieldRef<"UserMenuAccess", 'Int'>
+  readonly updatedBy: Prisma.FieldRef<"UserMenuAccess", 'Int'>
 }
     
 

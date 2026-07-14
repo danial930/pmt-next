@@ -15,19 +15,19 @@ export const createUserSchema = z.object({
   password: passwordSchema,
   firstName: z.string().min(1).max(50),
   lastName: z.string().min(1).max(50),
-  roleIds: z.array(z.string().uuid()).optional(),
+  roleIds: z.array(z.number()).optional(),
 });
 
 export const updateUserSchema = z.object({
   firstName: z.string().min(1).max(50).optional(),
   lastName: z.string().min(1).max(50).optional(),
   isActive: z.boolean().optional(),
-  roleIds: z.array(z.string().uuid()).optional(),
+  roleIds: z.array(z.number()).optional(),
 });
 
 export const userQuerySchema = paginationSchema.extend({
   isActive: z.coerce.boolean().optional(),
-  roleId: z.string().uuid().optional(),
+  roleId: z.number().optional(),
 });
 
 export type CreateUserInput = z.infer<typeof createUserSchema>;

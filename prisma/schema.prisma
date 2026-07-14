@@ -160,7 +160,7 @@ model AuditLog {
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
   createdBy Int?
-  updatedBy String?
+  updatedBy Int?
 
   @@index([entityName, entityId])
   @@index([performedById])
@@ -191,8 +191,8 @@ model Menu {
   isActive  Boolean  @default(true)
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
-  createdBy String?
-  updatedBy String?
+  createdBy Int?
+  updatedBy Int?
 
   @@index([parentId])
   @@index([sortOrder])
@@ -212,8 +212,8 @@ model MenuPermission {
   isActive  Boolean  @default(true)
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
-  createdBy String?
-  updatedBy String?
+  createdBy Int?
+  updatedBy Int?
 
   @@unique([menuId, roleId, permissionId])
   @@index([menuId])
@@ -233,8 +233,8 @@ model UserMenuAccess {
   isActive  Boolean  @default(true)
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
-  createdBy String?
-  updatedBy String?
+  createdBy Int?
+  updatedBy Int?
 
   @@unique([userId, menuId])
   @@index([userId])
@@ -253,8 +253,8 @@ model UserQuickLink {
   isActive  Boolean  @default(true)
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
-  createdBy String?
-  updatedBy String?
+  createdBy Int?
+  updatedBy Int?
 
   @@unique([userId, menuId])
   @@index([userId])
@@ -282,8 +282,8 @@ model UserPreference {
   isActive  Boolean  @default(true)
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
-  createdBy String?
-  updatedBy String?
+  createdBy Int?
+  updatedBy Int?
 
   @@map("user_preferences")
 }

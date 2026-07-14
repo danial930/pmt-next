@@ -18,7 +18,7 @@ const service = new UserService();
 export class UserController {
   static async list(req: NextRequest, user: AccessTokenPayload) {
     const query = validateQuery(req, userQuerySchema);
-    const result = await service.list(query, user.sub);
+    const result = await service.list(query, user.userId);
     return ApiResponse.success(
       result.data,
       "Users retrieved successfully",
@@ -30,7 +30,7 @@ export class UserController {
   static async getById(
     req: NextRequest,
     _user: AccessTokenPayload,
-    ctx: { params: { id: string } },
+    ctx: { params: { id: number } },
   ) {
     const data = await service.getById(ctx.params.id);
     return ApiResponse.success(data, "User retrieved successfully");
@@ -38,26 +38,26 @@ export class UserController {
 
   static async create(req: NextRequest, user: AccessTokenPayload) {
     const body = await validateBody(req, createUserSchema);
-    const data = await service.create(body, user.sub);
+    const data = await service.create(body, user.userId);
     return ApiResponse.success(data, "User created successfully", 201);
   }
 
   static async update(
     req: NextRequest,
     user: AccessTokenPayload,
-    ctx: { params: { id: string } },
+    ctx: { params: { id: number } },
   ) {
     const body = await validateBody(req, updateUserSchema);
-    const data = await service.update(ctx.params.id, body, user.sub);
+    const data = await service.update(ctx.params.id, body, user.userId);
     return ApiResponse.success(data, "User updated successfully");
   }
 
   static async delete(
     req: NextRequest,
     user: AccessTokenPayload,
-    ctx: { params: { id: string } },
+    ctx: { params: { id: number } },
   ) {
-    await service.delete(ctx.params.id, user.sub);
+    await service.delete(ctx.params.id, user.userId);
     return ApiResponse.success(null, "User deleted successfully");
   }
 }

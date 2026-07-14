@@ -31,6 +31,7 @@ export type AuditLogAvgAggregateOutputType = {
   entityId: number | null
   performedById: number | null
   createdBy: number | null
+  updatedBy: number | null
 }
 
 export type AuditLogSumAggregateOutputType = {
@@ -38,6 +39,7 @@ export type AuditLogSumAggregateOutputType = {
   entityId: number | null
   performedById: number | null
   createdBy: number | null
+  updatedBy: number | null
 }
 
 export type AuditLogMinAggregateOutputType = {
@@ -50,7 +52,7 @@ export type AuditLogMinAggregateOutputType = {
   createdAt: Date | null
   updatedAt: Date | null
   createdBy: number | null
-  updatedBy: string | null
+  updatedBy: number | null
 }
 
 export type AuditLogMaxAggregateOutputType = {
@@ -63,7 +65,7 @@ export type AuditLogMaxAggregateOutputType = {
   createdAt: Date | null
   updatedAt: Date | null
   createdBy: number | null
-  updatedBy: string | null
+  updatedBy: number | null
 }
 
 export type AuditLogCountAggregateOutputType = {
@@ -88,6 +90,7 @@ export type AuditLogAvgAggregateInputType = {
   entityId?: true
   performedById?: true
   createdBy?: true
+  updatedBy?: true
 }
 
 export type AuditLogSumAggregateInputType = {
@@ -95,6 +98,7 @@ export type AuditLogSumAggregateInputType = {
   entityId?: true
   performedById?: true
   createdBy?: true
+  updatedBy?: true
 }
 
 export type AuditLogMinAggregateInputType = {
@@ -237,7 +241,7 @@ export type AuditLogGroupByOutputType = {
   createdAt: Date
   updatedAt: Date
   createdBy: number | null
-  updatedBy: string | null
+  updatedBy: number | null
   _count: AuditLogCountAggregateOutputType | null
   _avg: AuditLogAvgAggregateOutputType | null
   _sum: AuditLogSumAggregateOutputType | null
@@ -275,7 +279,7 @@ export type AuditLogWhereInput = {
   createdAt?: Prisma.DateTimeFilter<"AuditLog"> | Date | string
   updatedAt?: Prisma.DateTimeFilter<"AuditLog"> | Date | string
   createdBy?: Prisma.IntNullableFilter<"AuditLog"> | number | null
-  updatedBy?: Prisma.StringNullableFilter<"AuditLog"> | string | null
+  updatedBy?: Prisma.IntNullableFilter<"AuditLog"> | number | null
   performedBy?: Prisma.XOR<Prisma.UserNullableScalarRelationFilter, Prisma.UserWhereInput> | null
 }
 
@@ -310,7 +314,7 @@ export type AuditLogWhereUniqueInput = Prisma.AtLeast<{
   createdAt?: Prisma.DateTimeFilter<"AuditLog"> | Date | string
   updatedAt?: Prisma.DateTimeFilter<"AuditLog"> | Date | string
   createdBy?: Prisma.IntNullableFilter<"AuditLog"> | number | null
-  updatedBy?: Prisma.StringNullableFilter<"AuditLog"> | string | null
+  updatedBy?: Prisma.IntNullableFilter<"AuditLog"> | number | null
   performedBy?: Prisma.XOR<Prisma.UserNullableScalarRelationFilter, Prisma.UserWhereInput> | null
 }, "id">
 
@@ -349,7 +353,7 @@ export type AuditLogScalarWhereWithAggregatesInput = {
   createdAt?: Prisma.DateTimeWithAggregatesFilter<"AuditLog"> | Date | string
   updatedAt?: Prisma.DateTimeWithAggregatesFilter<"AuditLog"> | Date | string
   createdBy?: Prisma.IntNullableWithAggregatesFilter<"AuditLog"> | number | null
-  updatedBy?: Prisma.StringNullableWithAggregatesFilter<"AuditLog"> | string | null
+  updatedBy?: Prisma.IntNullableWithAggregatesFilter<"AuditLog"> | number | null
 }
 
 export type AuditLogCreateInput = {
@@ -362,7 +366,7 @@ export type AuditLogCreateInput = {
   createdAt?: Date | string
   updatedAt?: Date | string
   createdBy?: number | null
-  updatedBy?: string | null
+  updatedBy?: number | null
   performedBy?: Prisma.UserCreateNestedOneWithoutAuditLogsInput
 }
 
@@ -378,7 +382,7 @@ export type AuditLogUncheckedCreateInput = {
   createdAt?: Date | string
   updatedAt?: Date | string
   createdBy?: number | null
-  updatedBy?: string | null
+  updatedBy?: number | null
 }
 
 export type AuditLogUpdateInput = {
@@ -391,7 +395,7 @@ export type AuditLogUpdateInput = {
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   createdBy?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
-  updatedBy?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  updatedBy?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   performedBy?: Prisma.UserUpdateOneWithoutAuditLogsNestedInput
 }
 
@@ -407,7 +411,7 @@ export type AuditLogUncheckedUpdateInput = {
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   createdBy?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
-  updatedBy?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  updatedBy?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
 }
 
 export type AuditLogCreateManyInput = {
@@ -422,7 +426,7 @@ export type AuditLogCreateManyInput = {
   createdAt?: Date | string
   updatedAt?: Date | string
   createdBy?: number | null
-  updatedBy?: string | null
+  updatedBy?: number | null
 }
 
 export type AuditLogUpdateManyMutationInput = {
@@ -435,7 +439,7 @@ export type AuditLogUpdateManyMutationInput = {
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   createdBy?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
-  updatedBy?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  updatedBy?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
 }
 
 export type AuditLogUncheckedUpdateManyInput = {
@@ -450,7 +454,7 @@ export type AuditLogUncheckedUpdateManyInput = {
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   createdBy?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
-  updatedBy?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  updatedBy?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
 }
 
 export type AuditLogListRelationFilter = {
@@ -483,6 +487,7 @@ export type AuditLogAvgOrderByAggregateInput = {
   entityId?: Prisma.SortOrder
   performedById?: Prisma.SortOrder
   createdBy?: Prisma.SortOrder
+  updatedBy?: Prisma.SortOrder
 }
 
 export type AuditLogMaxOrderByAggregateInput = {
@@ -516,6 +521,7 @@ export type AuditLogSumOrderByAggregateInput = {
   entityId?: Prisma.SortOrder
   performedById?: Prisma.SortOrder
   createdBy?: Prisma.SortOrder
+  updatedBy?: Prisma.SortOrder
 }
 
 export type AuditLogCreateNestedManyWithoutPerformedByInput = {
@@ -570,7 +576,7 @@ export type AuditLogCreateWithoutPerformedByInput = {
   createdAt?: Date | string
   updatedAt?: Date | string
   createdBy?: number | null
-  updatedBy?: string | null
+  updatedBy?: number | null
 }
 
 export type AuditLogUncheckedCreateWithoutPerformedByInput = {
@@ -584,7 +590,7 @@ export type AuditLogUncheckedCreateWithoutPerformedByInput = {
   createdAt?: Date | string
   updatedAt?: Date | string
   createdBy?: number | null
-  updatedBy?: string | null
+  updatedBy?: number | null
 }
 
 export type AuditLogCreateOrConnectWithoutPerformedByInput = {
@@ -628,7 +634,7 @@ export type AuditLogScalarWhereInput = {
   createdAt?: Prisma.DateTimeFilter<"AuditLog"> | Date | string
   updatedAt?: Prisma.DateTimeFilter<"AuditLog"> | Date | string
   createdBy?: Prisma.IntNullableFilter<"AuditLog"> | number | null
-  updatedBy?: Prisma.StringNullableFilter<"AuditLog"> | string | null
+  updatedBy?: Prisma.IntNullableFilter<"AuditLog"> | number | null
 }
 
 export type AuditLogCreateManyPerformedByInput = {
@@ -642,7 +648,7 @@ export type AuditLogCreateManyPerformedByInput = {
   createdAt?: Date | string
   updatedAt?: Date | string
   createdBy?: number | null
-  updatedBy?: string | null
+  updatedBy?: number | null
 }
 
 export type AuditLogUpdateWithoutPerformedByInput = {
@@ -655,7 +661,7 @@ export type AuditLogUpdateWithoutPerformedByInput = {
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   createdBy?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
-  updatedBy?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  updatedBy?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
 }
 
 export type AuditLogUncheckedUpdateWithoutPerformedByInput = {
@@ -669,7 +675,7 @@ export type AuditLogUncheckedUpdateWithoutPerformedByInput = {
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   createdBy?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
-  updatedBy?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  updatedBy?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
 }
 
 export type AuditLogUncheckedUpdateManyWithoutPerformedByInput = {
@@ -683,7 +689,7 @@ export type AuditLogUncheckedUpdateManyWithoutPerformedByInput = {
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   createdBy?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
-  updatedBy?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  updatedBy?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
 }
 
 
@@ -779,7 +785,7 @@ export type $AuditLogPayload<ExtArgs extends runtime.Types.Extensions.InternalAr
     createdAt: Date
     updatedAt: Date
     createdBy: number | null
-    updatedBy: string | null
+    updatedBy: number | null
   }, ExtArgs["result"]["auditLog"]>
   composites: {}
 }
@@ -1215,7 +1221,7 @@ export interface AuditLogFieldRefs {
   readonly createdAt: Prisma.FieldRef<"AuditLog", 'DateTime'>
   readonly updatedAt: Prisma.FieldRef<"AuditLog", 'DateTime'>
   readonly createdBy: Prisma.FieldRef<"AuditLog", 'Int'>
-  readonly updatedBy: Prisma.FieldRef<"AuditLog", 'String'>
+  readonly updatedBy: Prisma.FieldRef<"AuditLog", 'Int'>
 }
     
 

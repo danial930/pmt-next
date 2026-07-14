@@ -2,6 +2,7 @@
 import { prisma } from "@/lib/prisma";
 import { getSkipTake } from "@/core/pagination/pagination.util";
 import { UserCreateInput, UserUpdateInput, UserWhereInput } from "../../../prisma/generated/models";
+import { CreateUserInput } from "./user.validator";
 
 export class UserRepository {
   async findById(id: number) {
@@ -17,7 +18,7 @@ export class UserRepository {
     return prisma.user.findUnique({ where: { email } });
   }
 
-  async create(data: UserCreateInput) {
+  async create(data: any) {
     return prisma.user.create({
       data,
       include: { userRoles: { include: { role: true } } },
@@ -82,7 +83,7 @@ export class UserRepository {
     return { items, total };
   }
 
-  async setUserRoles(userId: string, roleIds: string[], updatedBy: string) {
+  async setUserRoles(userId: number, roleIds: number[], updatedBy: number) {
     return prisma.$transaction(async (tx: any) => {
       await tx.userRole.updateMany({
         where: { userId, isActive: true },

@@ -31,6 +31,8 @@ export type UserQuickLinkAvgAggregateOutputType = {
   userId: number | null
   menuId: number | null
   sortOrder: number | null
+  createdBy: number | null
+  updatedBy: number | null
 }
 
 export type UserQuickLinkSumAggregateOutputType = {
@@ -38,6 +40,8 @@ export type UserQuickLinkSumAggregateOutputType = {
   userId: number | null
   menuId: number | null
   sortOrder: number | null
+  createdBy: number | null
+  updatedBy: number | null
 }
 
 export type UserQuickLinkMinAggregateOutputType = {
@@ -48,8 +52,8 @@ export type UserQuickLinkMinAggregateOutputType = {
   isActive: boolean | null
   createdAt: Date | null
   updatedAt: Date | null
-  createdBy: string | null
-  updatedBy: string | null
+  createdBy: number | null
+  updatedBy: number | null
 }
 
 export type UserQuickLinkMaxAggregateOutputType = {
@@ -60,8 +64,8 @@ export type UserQuickLinkMaxAggregateOutputType = {
   isActive: boolean | null
   createdAt: Date | null
   updatedAt: Date | null
-  createdBy: string | null
-  updatedBy: string | null
+  createdBy: number | null
+  updatedBy: number | null
 }
 
 export type UserQuickLinkCountAggregateOutputType = {
@@ -83,6 +87,8 @@ export type UserQuickLinkAvgAggregateInputType = {
   userId?: true
   menuId?: true
   sortOrder?: true
+  createdBy?: true
+  updatedBy?: true
 }
 
 export type UserQuickLinkSumAggregateInputType = {
@@ -90,6 +96,8 @@ export type UserQuickLinkSumAggregateInputType = {
   userId?: true
   menuId?: true
   sortOrder?: true
+  createdBy?: true
+  updatedBy?: true
 }
 
 export type UserQuickLinkMinAggregateInputType = {
@@ -223,8 +231,8 @@ export type UserQuickLinkGroupByOutputType = {
   isActive: boolean
   createdAt: Date
   updatedAt: Date
-  createdBy: string | null
-  updatedBy: string | null
+  createdBy: number | null
+  updatedBy: number | null
   _count: UserQuickLinkCountAggregateOutputType | null
   _avg: UserQuickLinkAvgAggregateOutputType | null
   _sum: UserQuickLinkSumAggregateOutputType | null
@@ -258,8 +266,8 @@ export type UserQuickLinkWhereInput = {
   isActive?: Prisma.BoolFilter<"UserQuickLink"> | boolean
   createdAt?: Prisma.DateTimeFilter<"UserQuickLink"> | Date | string
   updatedAt?: Prisma.DateTimeFilter<"UserQuickLink"> | Date | string
-  createdBy?: Prisma.StringNullableFilter<"UserQuickLink"> | string | null
-  updatedBy?: Prisma.StringNullableFilter<"UserQuickLink"> | string | null
+  createdBy?: Prisma.IntNullableFilter<"UserQuickLink"> | number | null
+  updatedBy?: Prisma.IntNullableFilter<"UserQuickLink"> | number | null
   user?: Prisma.XOR<Prisma.UserScalarRelationFilter, Prisma.UserWhereInput>
   menu?: Prisma.XOR<Prisma.MenuScalarRelationFilter, Prisma.MenuWhereInput>
 }
@@ -290,8 +298,8 @@ export type UserQuickLinkWhereUniqueInput = Prisma.AtLeast<{
   isActive?: Prisma.BoolFilter<"UserQuickLink"> | boolean
   createdAt?: Prisma.DateTimeFilter<"UserQuickLink"> | Date | string
   updatedAt?: Prisma.DateTimeFilter<"UserQuickLink"> | Date | string
-  createdBy?: Prisma.StringNullableFilter<"UserQuickLink"> | string | null
-  updatedBy?: Prisma.StringNullableFilter<"UserQuickLink"> | string | null
+  createdBy?: Prisma.IntNullableFilter<"UserQuickLink"> | number | null
+  updatedBy?: Prisma.IntNullableFilter<"UserQuickLink"> | number | null
   user?: Prisma.XOR<Prisma.UserScalarRelationFilter, Prisma.UserWhereInput>
   menu?: Prisma.XOR<Prisma.MenuScalarRelationFilter, Prisma.MenuWhereInput>
 }, "id" | "userId_menuId">
@@ -324,8 +332,8 @@ export type UserQuickLinkScalarWhereWithAggregatesInput = {
   isActive?: Prisma.BoolWithAggregatesFilter<"UserQuickLink"> | boolean
   createdAt?: Prisma.DateTimeWithAggregatesFilter<"UserQuickLink"> | Date | string
   updatedAt?: Prisma.DateTimeWithAggregatesFilter<"UserQuickLink"> | Date | string
-  createdBy?: Prisma.StringNullableWithAggregatesFilter<"UserQuickLink"> | string | null
-  updatedBy?: Prisma.StringNullableWithAggregatesFilter<"UserQuickLink"> | string | null
+  createdBy?: Prisma.IntNullableWithAggregatesFilter<"UserQuickLink"> | number | null
+  updatedBy?: Prisma.IntNullableWithAggregatesFilter<"UserQuickLink"> | number | null
 }
 
 export type UserQuickLinkCreateInput = {
@@ -333,8 +341,8 @@ export type UserQuickLinkCreateInput = {
   isActive?: boolean
   createdAt?: Date | string
   updatedAt?: Date | string
-  createdBy?: string | null
-  updatedBy?: string | null
+  createdBy?: number | null
+  updatedBy?: number | null
   user: Prisma.UserCreateNestedOneWithoutUserQuickLinksInput
   menu: Prisma.MenuCreateNestedOneWithoutUserQuickLinksInput
 }
@@ -347,8 +355,8 @@ export type UserQuickLinkUncheckedCreateInput = {
   isActive?: boolean
   createdAt?: Date | string
   updatedAt?: Date | string
-  createdBy?: string | null
-  updatedBy?: string | null
+  createdBy?: number | null
+  updatedBy?: number | null
 }
 
 export type UserQuickLinkUpdateInput = {
@@ -356,8 +364,8 @@ export type UserQuickLinkUpdateInput = {
   isActive?: Prisma.BoolFieldUpdateOperationsInput | boolean
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  createdBy?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  updatedBy?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  createdBy?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  updatedBy?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   user?: Prisma.UserUpdateOneRequiredWithoutUserQuickLinksNestedInput
   menu?: Prisma.MenuUpdateOneRequiredWithoutUserQuickLinksNestedInput
 }
@@ -370,8 +378,8 @@ export type UserQuickLinkUncheckedUpdateInput = {
   isActive?: Prisma.BoolFieldUpdateOperationsInput | boolean
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  createdBy?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  updatedBy?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  createdBy?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  updatedBy?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
 }
 
 export type UserQuickLinkCreateManyInput = {
@@ -382,8 +390,8 @@ export type UserQuickLinkCreateManyInput = {
   isActive?: boolean
   createdAt?: Date | string
   updatedAt?: Date | string
-  createdBy?: string | null
-  updatedBy?: string | null
+  createdBy?: number | null
+  updatedBy?: number | null
 }
 
 export type UserQuickLinkUpdateManyMutationInput = {
@@ -391,8 +399,8 @@ export type UserQuickLinkUpdateManyMutationInput = {
   isActive?: Prisma.BoolFieldUpdateOperationsInput | boolean
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  createdBy?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  updatedBy?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  createdBy?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  updatedBy?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
 }
 
 export type UserQuickLinkUncheckedUpdateManyInput = {
@@ -403,8 +411,8 @@ export type UserQuickLinkUncheckedUpdateManyInput = {
   isActive?: Prisma.BoolFieldUpdateOperationsInput | boolean
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  createdBy?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  updatedBy?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  createdBy?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  updatedBy?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
 }
 
 export type UserQuickLinkListRelationFilter = {
@@ -439,6 +447,8 @@ export type UserQuickLinkAvgOrderByAggregateInput = {
   userId?: Prisma.SortOrder
   menuId?: Prisma.SortOrder
   sortOrder?: Prisma.SortOrder
+  createdBy?: Prisma.SortOrder
+  updatedBy?: Prisma.SortOrder
 }
 
 export type UserQuickLinkMaxOrderByAggregateInput = {
@@ -470,6 +480,8 @@ export type UserQuickLinkSumOrderByAggregateInput = {
   userId?: Prisma.SortOrder
   menuId?: Prisma.SortOrder
   sortOrder?: Prisma.SortOrder
+  createdBy?: Prisma.SortOrder
+  updatedBy?: Prisma.SortOrder
 }
 
 export type UserQuickLinkCreateNestedManyWithoutUserInput = {
@@ -561,8 +573,8 @@ export type UserQuickLinkCreateWithoutUserInput = {
   isActive?: boolean
   createdAt?: Date | string
   updatedAt?: Date | string
-  createdBy?: string | null
-  updatedBy?: string | null
+  createdBy?: number | null
+  updatedBy?: number | null
   menu: Prisma.MenuCreateNestedOneWithoutUserQuickLinksInput
 }
 
@@ -573,8 +585,8 @@ export type UserQuickLinkUncheckedCreateWithoutUserInput = {
   isActive?: boolean
   createdAt?: Date | string
   updatedAt?: Date | string
-  createdBy?: string | null
-  updatedBy?: string | null
+  createdBy?: number | null
+  updatedBy?: number | null
 }
 
 export type UserQuickLinkCreateOrConnectWithoutUserInput = {
@@ -614,8 +626,8 @@ export type UserQuickLinkScalarWhereInput = {
   isActive?: Prisma.BoolFilter<"UserQuickLink"> | boolean
   createdAt?: Prisma.DateTimeFilter<"UserQuickLink"> | Date | string
   updatedAt?: Prisma.DateTimeFilter<"UserQuickLink"> | Date | string
-  createdBy?: Prisma.StringNullableFilter<"UserQuickLink"> | string | null
-  updatedBy?: Prisma.StringNullableFilter<"UserQuickLink"> | string | null
+  createdBy?: Prisma.IntNullableFilter<"UserQuickLink"> | number | null
+  updatedBy?: Prisma.IntNullableFilter<"UserQuickLink"> | number | null
 }
 
 export type UserQuickLinkCreateWithoutMenuInput = {
@@ -623,8 +635,8 @@ export type UserQuickLinkCreateWithoutMenuInput = {
   isActive?: boolean
   createdAt?: Date | string
   updatedAt?: Date | string
-  createdBy?: string | null
-  updatedBy?: string | null
+  createdBy?: number | null
+  updatedBy?: number | null
   user: Prisma.UserCreateNestedOneWithoutUserQuickLinksInput
 }
 
@@ -635,8 +647,8 @@ export type UserQuickLinkUncheckedCreateWithoutMenuInput = {
   isActive?: boolean
   createdAt?: Date | string
   updatedAt?: Date | string
-  createdBy?: string | null
-  updatedBy?: string | null
+  createdBy?: number | null
+  updatedBy?: number | null
 }
 
 export type UserQuickLinkCreateOrConnectWithoutMenuInput = {
@@ -672,8 +684,8 @@ export type UserQuickLinkCreateManyUserInput = {
   isActive?: boolean
   createdAt?: Date | string
   updatedAt?: Date | string
-  createdBy?: string | null
-  updatedBy?: string | null
+  createdBy?: number | null
+  updatedBy?: number | null
 }
 
 export type UserQuickLinkUpdateWithoutUserInput = {
@@ -681,8 +693,8 @@ export type UserQuickLinkUpdateWithoutUserInput = {
   isActive?: Prisma.BoolFieldUpdateOperationsInput | boolean
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  createdBy?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  updatedBy?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  createdBy?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  updatedBy?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   menu?: Prisma.MenuUpdateOneRequiredWithoutUserQuickLinksNestedInput
 }
 
@@ -693,8 +705,8 @@ export type UserQuickLinkUncheckedUpdateWithoutUserInput = {
   isActive?: Prisma.BoolFieldUpdateOperationsInput | boolean
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  createdBy?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  updatedBy?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  createdBy?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  updatedBy?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
 }
 
 export type UserQuickLinkUncheckedUpdateManyWithoutUserInput = {
@@ -704,8 +716,8 @@ export type UserQuickLinkUncheckedUpdateManyWithoutUserInput = {
   isActive?: Prisma.BoolFieldUpdateOperationsInput | boolean
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  createdBy?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  updatedBy?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  createdBy?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  updatedBy?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
 }
 
 export type UserQuickLinkCreateManyMenuInput = {
@@ -715,8 +727,8 @@ export type UserQuickLinkCreateManyMenuInput = {
   isActive?: boolean
   createdAt?: Date | string
   updatedAt?: Date | string
-  createdBy?: string | null
-  updatedBy?: string | null
+  createdBy?: number | null
+  updatedBy?: number | null
 }
 
 export type UserQuickLinkUpdateWithoutMenuInput = {
@@ -724,8 +736,8 @@ export type UserQuickLinkUpdateWithoutMenuInput = {
   isActive?: Prisma.BoolFieldUpdateOperationsInput | boolean
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  createdBy?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  updatedBy?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  createdBy?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  updatedBy?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   user?: Prisma.UserUpdateOneRequiredWithoutUserQuickLinksNestedInput
 }
 
@@ -736,8 +748,8 @@ export type UserQuickLinkUncheckedUpdateWithoutMenuInput = {
   isActive?: Prisma.BoolFieldUpdateOperationsInput | boolean
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  createdBy?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  updatedBy?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  createdBy?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  updatedBy?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
 }
 
 export type UserQuickLinkUncheckedUpdateManyWithoutMenuInput = {
@@ -747,8 +759,8 @@ export type UserQuickLinkUncheckedUpdateManyWithoutMenuInput = {
   isActive?: Prisma.BoolFieldUpdateOperationsInput | boolean
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  createdBy?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  updatedBy?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  createdBy?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  updatedBy?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
 }
 
 
@@ -835,8 +847,8 @@ export type $UserQuickLinkPayload<ExtArgs extends runtime.Types.Extensions.Inter
     isActive: boolean
     createdAt: Date
     updatedAt: Date
-    createdBy: string | null
-    updatedBy: string | null
+    createdBy: number | null
+    updatedBy: number | null
   }, ExtArgs["result"]["userQuickLink"]>
   composites: {}
 }
@@ -1269,8 +1281,8 @@ export interface UserQuickLinkFieldRefs {
   readonly isActive: Prisma.FieldRef<"UserQuickLink", 'Boolean'>
   readonly createdAt: Prisma.FieldRef<"UserQuickLink", 'DateTime'>
   readonly updatedAt: Prisma.FieldRef<"UserQuickLink", 'DateTime'>
-  readonly createdBy: Prisma.FieldRef<"UserQuickLink", 'String'>
-  readonly updatedBy: Prisma.FieldRef<"UserQuickLink", 'String'>
+  readonly createdBy: Prisma.FieldRef<"UserQuickLink", 'Int'>
+  readonly updatedBy: Prisma.FieldRef<"UserQuickLink", 'Int'>
 }
     
 

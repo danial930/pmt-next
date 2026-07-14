@@ -30,12 +30,16 @@ export type UserPreferenceAvgAggregateOutputType = {
   id: number | null
   userId: number | null
   sidebarWidth: number | null
+  createdBy: number | null
+  updatedBy: number | null
 }
 
 export type UserPreferenceSumAggregateOutputType = {
   id: number | null
   userId: number | null
   sidebarWidth: number | null
+  createdBy: number | null
+  updatedBy: number | null
 }
 
 export type UserPreferenceMinAggregateOutputType = {
@@ -49,8 +53,8 @@ export type UserPreferenceMinAggregateOutputType = {
   isActive: boolean | null
   createdAt: Date | null
   updatedAt: Date | null
-  createdBy: string | null
-  updatedBy: string | null
+  createdBy: number | null
+  updatedBy: number | null
 }
 
 export type UserPreferenceMaxAggregateOutputType = {
@@ -64,8 +68,8 @@ export type UserPreferenceMaxAggregateOutputType = {
   isActive: boolean | null
   createdAt: Date | null
   updatedAt: Date | null
-  createdBy: string | null
-  updatedBy: string | null
+  createdBy: number | null
+  updatedBy: number | null
 }
 
 export type UserPreferenceCountAggregateOutputType = {
@@ -90,12 +94,16 @@ export type UserPreferenceAvgAggregateInputType = {
   id?: true
   userId?: true
   sidebarWidth?: true
+  createdBy?: true
+  updatedBy?: true
 }
 
 export type UserPreferenceSumAggregateInputType = {
   id?: true
   userId?: true
   sidebarWidth?: true
+  createdBy?: true
+  updatedBy?: true
 }
 
 export type UserPreferenceMinAggregateInputType = {
@@ -243,8 +251,8 @@ export type UserPreferenceGroupByOutputType = {
   isActive: boolean
   createdAt: Date
   updatedAt: Date
-  createdBy: string | null
-  updatedBy: string | null
+  createdBy: number | null
+  updatedBy: number | null
   _count: UserPreferenceCountAggregateOutputType | null
   _avg: UserPreferenceAvgAggregateOutputType | null
   _sum: UserPreferenceSumAggregateOutputType | null
@@ -282,8 +290,8 @@ export type UserPreferenceWhereInput = {
   isActive?: Prisma.BoolFilter<"UserPreference"> | boolean
   createdAt?: Prisma.DateTimeFilter<"UserPreference"> | Date | string
   updatedAt?: Prisma.DateTimeFilter<"UserPreference"> | Date | string
-  createdBy?: Prisma.StringNullableFilter<"UserPreference"> | string | null
-  updatedBy?: Prisma.StringNullableFilter<"UserPreference"> | string | null
+  createdBy?: Prisma.IntNullableFilter<"UserPreference"> | number | null
+  updatedBy?: Prisma.IntNullableFilter<"UserPreference"> | number | null
   user?: Prisma.XOR<Prisma.UserScalarRelationFilter, Prisma.UserWhereInput>
 }
 
@@ -319,8 +327,8 @@ export type UserPreferenceWhereUniqueInput = Prisma.AtLeast<{
   isActive?: Prisma.BoolFilter<"UserPreference"> | boolean
   createdAt?: Prisma.DateTimeFilter<"UserPreference"> | Date | string
   updatedAt?: Prisma.DateTimeFilter<"UserPreference"> | Date | string
-  createdBy?: Prisma.StringNullableFilter<"UserPreference"> | string | null
-  updatedBy?: Prisma.StringNullableFilter<"UserPreference"> | string | null
+  createdBy?: Prisma.IntNullableFilter<"UserPreference"> | number | null
+  updatedBy?: Prisma.IntNullableFilter<"UserPreference"> | number | null
   user?: Prisma.XOR<Prisma.UserScalarRelationFilter, Prisma.UserWhereInput>
 }, "id" | "userId">
 
@@ -360,8 +368,8 @@ export type UserPreferenceScalarWhereWithAggregatesInput = {
   isActive?: Prisma.BoolWithAggregatesFilter<"UserPreference"> | boolean
   createdAt?: Prisma.DateTimeWithAggregatesFilter<"UserPreference"> | Date | string
   updatedAt?: Prisma.DateTimeWithAggregatesFilter<"UserPreference"> | Date | string
-  createdBy?: Prisma.StringNullableWithAggregatesFilter<"UserPreference"> | string | null
-  updatedBy?: Prisma.StringNullableWithAggregatesFilter<"UserPreference"> | string | null
+  createdBy?: Prisma.IntNullableWithAggregatesFilter<"UserPreference"> | number | null
+  updatedBy?: Prisma.IntNullableWithAggregatesFilter<"UserPreference"> | number | null
 }
 
 export type UserPreferenceCreateInput = {
@@ -374,8 +382,8 @@ export type UserPreferenceCreateInput = {
   isActive?: boolean
   createdAt?: Date | string
   updatedAt?: Date | string
-  createdBy?: string | null
-  updatedBy?: string | null
+  createdBy?: number | null
+  updatedBy?: number | null
   user: Prisma.UserCreateNestedOneWithoutUserPreferenceInput
 }
 
@@ -391,8 +399,8 @@ export type UserPreferenceUncheckedCreateInput = {
   isActive?: boolean
   createdAt?: Date | string
   updatedAt?: Date | string
-  createdBy?: string | null
-  updatedBy?: string | null
+  createdBy?: number | null
+  updatedBy?: number | null
 }
 
 export type UserPreferenceUpdateInput = {
@@ -405,8 +413,8 @@ export type UserPreferenceUpdateInput = {
   isActive?: Prisma.BoolFieldUpdateOperationsInput | boolean
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  createdBy?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  updatedBy?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  createdBy?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  updatedBy?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   user?: Prisma.UserUpdateOneRequiredWithoutUserPreferenceNestedInput
 }
 
@@ -422,8 +430,8 @@ export type UserPreferenceUncheckedUpdateInput = {
   isActive?: Prisma.BoolFieldUpdateOperationsInput | boolean
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  createdBy?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  updatedBy?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  createdBy?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  updatedBy?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
 }
 
 export type UserPreferenceCreateManyInput = {
@@ -438,8 +446,8 @@ export type UserPreferenceCreateManyInput = {
   isActive?: boolean
   createdAt?: Date | string
   updatedAt?: Date | string
-  createdBy?: string | null
-  updatedBy?: string | null
+  createdBy?: number | null
+  updatedBy?: number | null
 }
 
 export type UserPreferenceUpdateManyMutationInput = {
@@ -452,8 +460,8 @@ export type UserPreferenceUpdateManyMutationInput = {
   isActive?: Prisma.BoolFieldUpdateOperationsInput | boolean
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  createdBy?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  updatedBy?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  createdBy?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  updatedBy?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
 }
 
 export type UserPreferenceUncheckedUpdateManyInput = {
@@ -468,8 +476,8 @@ export type UserPreferenceUncheckedUpdateManyInput = {
   isActive?: Prisma.BoolFieldUpdateOperationsInput | boolean
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  createdBy?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  updatedBy?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  createdBy?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  updatedBy?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
 }
 
 export type UserPreferenceNullableScalarRelationFilter = {
@@ -505,6 +513,8 @@ export type UserPreferenceAvgOrderByAggregateInput = {
   id?: Prisma.SortOrder
   userId?: Prisma.SortOrder
   sidebarWidth?: Prisma.SortOrder
+  createdBy?: Prisma.SortOrder
+  updatedBy?: Prisma.SortOrder
 }
 
 export type UserPreferenceMaxOrderByAggregateInput = {
@@ -541,6 +551,8 @@ export type UserPreferenceSumOrderByAggregateInput = {
   id?: Prisma.SortOrder
   userId?: Prisma.SortOrder
   sidebarWidth?: Prisma.SortOrder
+  createdBy?: Prisma.SortOrder
+  updatedBy?: Prisma.SortOrder
 }
 
 export type UserPreferenceCreateNestedOneWithoutUserInput = {
@@ -594,8 +606,8 @@ export type UserPreferenceCreateWithoutUserInput = {
   isActive?: boolean
   createdAt?: Date | string
   updatedAt?: Date | string
-  createdBy?: string | null
-  updatedBy?: string | null
+  createdBy?: number | null
+  updatedBy?: number | null
 }
 
 export type UserPreferenceUncheckedCreateWithoutUserInput = {
@@ -609,8 +621,8 @@ export type UserPreferenceUncheckedCreateWithoutUserInput = {
   isActive?: boolean
   createdAt?: Date | string
   updatedAt?: Date | string
-  createdBy?: string | null
-  updatedBy?: string | null
+  createdBy?: number | null
+  updatedBy?: number | null
 }
 
 export type UserPreferenceCreateOrConnectWithoutUserInput = {
@@ -639,8 +651,8 @@ export type UserPreferenceUpdateWithoutUserInput = {
   isActive?: Prisma.BoolFieldUpdateOperationsInput | boolean
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  createdBy?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  updatedBy?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  createdBy?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  updatedBy?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
 }
 
 export type UserPreferenceUncheckedUpdateWithoutUserInput = {
@@ -654,8 +666,8 @@ export type UserPreferenceUncheckedUpdateWithoutUserInput = {
   isActive?: Prisma.BoolFieldUpdateOperationsInput | boolean
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  createdBy?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  updatedBy?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  createdBy?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  updatedBy?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
 }
 
 
@@ -755,8 +767,8 @@ export type $UserPreferencePayload<ExtArgs extends runtime.Types.Extensions.Inte
     isActive: boolean
     createdAt: Date
     updatedAt: Date
-    createdBy: string | null
-    updatedBy: string | null
+    createdBy: number | null
+    updatedBy: number | null
   }, ExtArgs["result"]["userPreference"]>
   composites: {}
 }
@@ -1192,8 +1204,8 @@ export interface UserPreferenceFieldRefs {
   readonly isActive: Prisma.FieldRef<"UserPreference", 'Boolean'>
   readonly createdAt: Prisma.FieldRef<"UserPreference", 'DateTime'>
   readonly updatedAt: Prisma.FieldRef<"UserPreference", 'DateTime'>
-  readonly createdBy: Prisma.FieldRef<"UserPreference", 'String'>
-  readonly updatedBy: Prisma.FieldRef<"UserPreference", 'String'>
+  readonly createdBy: Prisma.FieldRef<"UserPreference", 'Int'>
+  readonly updatedBy: Prisma.FieldRef<"UserPreference", 'Int'>
 }
     
 

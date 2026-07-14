@@ -30,12 +30,16 @@ export type MenuAvgAggregateOutputType = {
   id: number | null
   parentId: number | null
   sortOrder: number | null
+  createdBy: number | null
+  updatedBy: number | null
 }
 
 export type MenuSumAggregateOutputType = {
   id: number | null
   parentId: number | null
   sortOrder: number | null
+  createdBy: number | null
+  updatedBy: number | null
 }
 
 export type MenuMinAggregateOutputType = {
@@ -53,8 +57,8 @@ export type MenuMinAggregateOutputType = {
   isActive: boolean | null
   createdAt: Date | null
   updatedAt: Date | null
-  createdBy: string | null
-  updatedBy: string | null
+  createdBy: number | null
+  updatedBy: number | null
 }
 
 export type MenuMaxAggregateOutputType = {
@@ -72,8 +76,8 @@ export type MenuMaxAggregateOutputType = {
   isActive: boolean | null
   createdAt: Date | null
   updatedAt: Date | null
-  createdBy: string | null
-  updatedBy: string | null
+  createdBy: number | null
+  updatedBy: number | null
 }
 
 export type MenuCountAggregateOutputType = {
@@ -101,12 +105,16 @@ export type MenuAvgAggregateInputType = {
   id?: true
   parentId?: true
   sortOrder?: true
+  createdBy?: true
+  updatedBy?: true
 }
 
 export type MenuSumAggregateInputType = {
   id?: true
   parentId?: true
   sortOrder?: true
+  createdBy?: true
+  updatedBy?: true
 }
 
 export type MenuMinAggregateInputType = {
@@ -268,8 +276,8 @@ export type MenuGroupByOutputType = {
   isActive: boolean
   createdAt: Date
   updatedAt: Date
-  createdBy: string | null
-  updatedBy: string | null
+  createdBy: number | null
+  updatedBy: number | null
   _count: MenuCountAggregateOutputType | null
   _avg: MenuAvgAggregateOutputType | null
   _sum: MenuSumAggregateOutputType | null
@@ -310,8 +318,8 @@ export type MenuWhereInput = {
   isActive?: Prisma.BoolFilter<"Menu"> | boolean
   createdAt?: Prisma.DateTimeFilter<"Menu"> | Date | string
   updatedAt?: Prisma.DateTimeFilter<"Menu"> | Date | string
-  createdBy?: Prisma.StringNullableFilter<"Menu"> | string | null
-  updatedBy?: Prisma.StringNullableFilter<"Menu"> | string | null
+  createdBy?: Prisma.IntNullableFilter<"Menu"> | number | null
+  updatedBy?: Prisma.IntNullableFilter<"Menu"> | number | null
   parent?: Prisma.XOR<Prisma.MenuNullableScalarRelationFilter, Prisma.MenuWhereInput> | null
   children?: Prisma.MenuListRelationFilter
   menuPermissions?: Prisma.MenuPermissionListRelationFilter
@@ -361,8 +369,8 @@ export type MenuWhereUniqueInput = Prisma.AtLeast<{
   isActive?: Prisma.BoolFilter<"Menu"> | boolean
   createdAt?: Prisma.DateTimeFilter<"Menu"> | Date | string
   updatedAt?: Prisma.DateTimeFilter<"Menu"> | Date | string
-  createdBy?: Prisma.StringNullableFilter<"Menu"> | string | null
-  updatedBy?: Prisma.StringNullableFilter<"Menu"> | string | null
+  createdBy?: Prisma.IntNullableFilter<"Menu"> | number | null
+  updatedBy?: Prisma.IntNullableFilter<"Menu"> | number | null
   parent?: Prisma.XOR<Prisma.MenuNullableScalarRelationFilter, Prisma.MenuWhereInput> | null
   children?: Prisma.MenuListRelationFilter
   menuPermissions?: Prisma.MenuPermissionListRelationFilter
@@ -412,8 +420,8 @@ export type MenuScalarWhereWithAggregatesInput = {
   isActive?: Prisma.BoolWithAggregatesFilter<"Menu"> | boolean
   createdAt?: Prisma.DateTimeWithAggregatesFilter<"Menu"> | Date | string
   updatedAt?: Prisma.DateTimeWithAggregatesFilter<"Menu"> | Date | string
-  createdBy?: Prisma.StringNullableWithAggregatesFilter<"Menu"> | string | null
-  updatedBy?: Prisma.StringNullableWithAggregatesFilter<"Menu"> | string | null
+  createdBy?: Prisma.IntNullableWithAggregatesFilter<"Menu"> | number | null
+  updatedBy?: Prisma.IntNullableWithAggregatesFilter<"Menu"> | number | null
 }
 
 export type MenuCreateInput = {
@@ -429,8 +437,8 @@ export type MenuCreateInput = {
   isActive?: boolean
   createdAt?: Date | string
   updatedAt?: Date | string
-  createdBy?: string | null
-  updatedBy?: string | null
+  createdBy?: number | null
+  updatedBy?: number | null
   parent?: Prisma.MenuCreateNestedOneWithoutChildrenInput
   children?: Prisma.MenuCreateNestedManyWithoutParentInput
   menuPermissions?: Prisma.MenuPermissionCreateNestedManyWithoutMenuInput
@@ -453,8 +461,8 @@ export type MenuUncheckedCreateInput = {
   isActive?: boolean
   createdAt?: Date | string
   updatedAt?: Date | string
-  createdBy?: string | null
-  updatedBy?: string | null
+  createdBy?: number | null
+  updatedBy?: number | null
   children?: Prisma.MenuUncheckedCreateNestedManyWithoutParentInput
   menuPermissions?: Prisma.MenuPermissionUncheckedCreateNestedManyWithoutMenuInput
   userMenuAccess?: Prisma.UserMenuAccessUncheckedCreateNestedManyWithoutMenuInput
@@ -474,8 +482,8 @@ export type MenuUpdateInput = {
   isActive?: Prisma.BoolFieldUpdateOperationsInput | boolean
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  createdBy?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  updatedBy?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  createdBy?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  updatedBy?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   parent?: Prisma.MenuUpdateOneWithoutChildrenNestedInput
   children?: Prisma.MenuUpdateManyWithoutParentNestedInput
   menuPermissions?: Prisma.MenuPermissionUpdateManyWithoutMenuNestedInput
@@ -498,8 +506,8 @@ export type MenuUncheckedUpdateInput = {
   isActive?: Prisma.BoolFieldUpdateOperationsInput | boolean
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  createdBy?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  updatedBy?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  createdBy?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  updatedBy?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   children?: Prisma.MenuUncheckedUpdateManyWithoutParentNestedInput
   menuPermissions?: Prisma.MenuPermissionUncheckedUpdateManyWithoutMenuNestedInput
   userMenuAccess?: Prisma.UserMenuAccessUncheckedUpdateManyWithoutMenuNestedInput
@@ -521,8 +529,8 @@ export type MenuCreateManyInput = {
   isActive?: boolean
   createdAt?: Date | string
   updatedAt?: Date | string
-  createdBy?: string | null
-  updatedBy?: string | null
+  createdBy?: number | null
+  updatedBy?: number | null
 }
 
 export type MenuUpdateManyMutationInput = {
@@ -538,8 +546,8 @@ export type MenuUpdateManyMutationInput = {
   isActive?: Prisma.BoolFieldUpdateOperationsInput | boolean
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  createdBy?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  updatedBy?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  createdBy?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  updatedBy?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
 }
 
 export type MenuUncheckedUpdateManyInput = {
@@ -557,8 +565,8 @@ export type MenuUncheckedUpdateManyInput = {
   isActive?: Prisma.BoolFieldUpdateOperationsInput | boolean
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  createdBy?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  updatedBy?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  createdBy?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  updatedBy?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
 }
 
 export type MenuNullableScalarRelationFilter = {
@@ -599,6 +607,8 @@ export type MenuAvgOrderByAggregateInput = {
   id?: Prisma.SortOrder
   parentId?: Prisma.SortOrder
   sortOrder?: Prisma.SortOrder
+  createdBy?: Prisma.SortOrder
+  updatedBy?: Prisma.SortOrder
 }
 
 export type MenuMaxOrderByAggregateInput = {
@@ -643,6 +653,8 @@ export type MenuSumOrderByAggregateInput = {
   id?: Prisma.SortOrder
   parentId?: Prisma.SortOrder
   sortOrder?: Prisma.SortOrder
+  createdBy?: Prisma.SortOrder
+  updatedBy?: Prisma.SortOrder
 }
 
 export type MenuScalarRelationFilter = {
@@ -763,8 +775,8 @@ export type MenuCreateWithoutChildrenInput = {
   isActive?: boolean
   createdAt?: Date | string
   updatedAt?: Date | string
-  createdBy?: string | null
-  updatedBy?: string | null
+  createdBy?: number | null
+  updatedBy?: number | null
   parent?: Prisma.MenuCreateNestedOneWithoutChildrenInput
   menuPermissions?: Prisma.MenuPermissionCreateNestedManyWithoutMenuInput
   userMenuAccess?: Prisma.UserMenuAccessCreateNestedManyWithoutMenuInput
@@ -786,8 +798,8 @@ export type MenuUncheckedCreateWithoutChildrenInput = {
   isActive?: boolean
   createdAt?: Date | string
   updatedAt?: Date | string
-  createdBy?: string | null
-  updatedBy?: string | null
+  createdBy?: number | null
+  updatedBy?: number | null
   menuPermissions?: Prisma.MenuPermissionUncheckedCreateNestedManyWithoutMenuInput
   userMenuAccess?: Prisma.UserMenuAccessUncheckedCreateNestedManyWithoutMenuInput
   userQuickLinks?: Prisma.UserQuickLinkUncheckedCreateNestedManyWithoutMenuInput
@@ -811,8 +823,8 @@ export type MenuCreateWithoutParentInput = {
   isActive?: boolean
   createdAt?: Date | string
   updatedAt?: Date | string
-  createdBy?: string | null
-  updatedBy?: string | null
+  createdBy?: number | null
+  updatedBy?: number | null
   children?: Prisma.MenuCreateNestedManyWithoutParentInput
   menuPermissions?: Prisma.MenuPermissionCreateNestedManyWithoutMenuInput
   userMenuAccess?: Prisma.UserMenuAccessCreateNestedManyWithoutMenuInput
@@ -833,8 +845,8 @@ export type MenuUncheckedCreateWithoutParentInput = {
   isActive?: boolean
   createdAt?: Date | string
   updatedAt?: Date | string
-  createdBy?: string | null
-  updatedBy?: string | null
+  createdBy?: number | null
+  updatedBy?: number | null
   children?: Prisma.MenuUncheckedCreateNestedManyWithoutParentInput
   menuPermissions?: Prisma.MenuPermissionUncheckedCreateNestedManyWithoutMenuInput
   userMenuAccess?: Prisma.UserMenuAccessUncheckedCreateNestedManyWithoutMenuInput
@@ -875,8 +887,8 @@ export type MenuUpdateWithoutChildrenInput = {
   isActive?: Prisma.BoolFieldUpdateOperationsInput | boolean
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  createdBy?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  updatedBy?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  createdBy?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  updatedBy?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   parent?: Prisma.MenuUpdateOneWithoutChildrenNestedInput
   menuPermissions?: Prisma.MenuPermissionUpdateManyWithoutMenuNestedInput
   userMenuAccess?: Prisma.UserMenuAccessUpdateManyWithoutMenuNestedInput
@@ -898,8 +910,8 @@ export type MenuUncheckedUpdateWithoutChildrenInput = {
   isActive?: Prisma.BoolFieldUpdateOperationsInput | boolean
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  createdBy?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  updatedBy?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  createdBy?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  updatedBy?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   menuPermissions?: Prisma.MenuPermissionUncheckedUpdateManyWithoutMenuNestedInput
   userMenuAccess?: Prisma.UserMenuAccessUncheckedUpdateManyWithoutMenuNestedInput
   userQuickLinks?: Prisma.UserQuickLinkUncheckedUpdateManyWithoutMenuNestedInput
@@ -939,8 +951,8 @@ export type MenuScalarWhereInput = {
   isActive?: Prisma.BoolFilter<"Menu"> | boolean
   createdAt?: Prisma.DateTimeFilter<"Menu"> | Date | string
   updatedAt?: Prisma.DateTimeFilter<"Menu"> | Date | string
-  createdBy?: Prisma.StringNullableFilter<"Menu"> | string | null
-  updatedBy?: Prisma.StringNullableFilter<"Menu"> | string | null
+  createdBy?: Prisma.IntNullableFilter<"Menu"> | number | null
+  updatedBy?: Prisma.IntNullableFilter<"Menu"> | number | null
 }
 
 export type MenuCreateWithoutMenuPermissionsInput = {
@@ -956,8 +968,8 @@ export type MenuCreateWithoutMenuPermissionsInput = {
   isActive?: boolean
   createdAt?: Date | string
   updatedAt?: Date | string
-  createdBy?: string | null
-  updatedBy?: string | null
+  createdBy?: number | null
+  updatedBy?: number | null
   parent?: Prisma.MenuCreateNestedOneWithoutChildrenInput
   children?: Prisma.MenuCreateNestedManyWithoutParentInput
   userMenuAccess?: Prisma.UserMenuAccessCreateNestedManyWithoutMenuInput
@@ -979,8 +991,8 @@ export type MenuUncheckedCreateWithoutMenuPermissionsInput = {
   isActive?: boolean
   createdAt?: Date | string
   updatedAt?: Date | string
-  createdBy?: string | null
-  updatedBy?: string | null
+  createdBy?: number | null
+  updatedBy?: number | null
   children?: Prisma.MenuUncheckedCreateNestedManyWithoutParentInput
   userMenuAccess?: Prisma.UserMenuAccessUncheckedCreateNestedManyWithoutMenuInput
   userQuickLinks?: Prisma.UserQuickLinkUncheckedCreateNestedManyWithoutMenuInput
@@ -1015,8 +1027,8 @@ export type MenuUpdateWithoutMenuPermissionsInput = {
   isActive?: Prisma.BoolFieldUpdateOperationsInput | boolean
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  createdBy?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  updatedBy?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  createdBy?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  updatedBy?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   parent?: Prisma.MenuUpdateOneWithoutChildrenNestedInput
   children?: Prisma.MenuUpdateManyWithoutParentNestedInput
   userMenuAccess?: Prisma.UserMenuAccessUpdateManyWithoutMenuNestedInput
@@ -1038,8 +1050,8 @@ export type MenuUncheckedUpdateWithoutMenuPermissionsInput = {
   isActive?: Prisma.BoolFieldUpdateOperationsInput | boolean
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  createdBy?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  updatedBy?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  createdBy?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  updatedBy?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   children?: Prisma.MenuUncheckedUpdateManyWithoutParentNestedInput
   userMenuAccess?: Prisma.UserMenuAccessUncheckedUpdateManyWithoutMenuNestedInput
   userQuickLinks?: Prisma.UserQuickLinkUncheckedUpdateManyWithoutMenuNestedInput
@@ -1058,8 +1070,8 @@ export type MenuCreateWithoutUserMenuAccessInput = {
   isActive?: boolean
   createdAt?: Date | string
   updatedAt?: Date | string
-  createdBy?: string | null
-  updatedBy?: string | null
+  createdBy?: number | null
+  updatedBy?: number | null
   parent?: Prisma.MenuCreateNestedOneWithoutChildrenInput
   children?: Prisma.MenuCreateNestedManyWithoutParentInput
   menuPermissions?: Prisma.MenuPermissionCreateNestedManyWithoutMenuInput
@@ -1081,8 +1093,8 @@ export type MenuUncheckedCreateWithoutUserMenuAccessInput = {
   isActive?: boolean
   createdAt?: Date | string
   updatedAt?: Date | string
-  createdBy?: string | null
-  updatedBy?: string | null
+  createdBy?: number | null
+  updatedBy?: number | null
   children?: Prisma.MenuUncheckedCreateNestedManyWithoutParentInput
   menuPermissions?: Prisma.MenuPermissionUncheckedCreateNestedManyWithoutMenuInput
   userQuickLinks?: Prisma.UserQuickLinkUncheckedCreateNestedManyWithoutMenuInput
@@ -1117,8 +1129,8 @@ export type MenuUpdateWithoutUserMenuAccessInput = {
   isActive?: Prisma.BoolFieldUpdateOperationsInput | boolean
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  createdBy?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  updatedBy?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  createdBy?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  updatedBy?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   parent?: Prisma.MenuUpdateOneWithoutChildrenNestedInput
   children?: Prisma.MenuUpdateManyWithoutParentNestedInput
   menuPermissions?: Prisma.MenuPermissionUpdateManyWithoutMenuNestedInput
@@ -1140,8 +1152,8 @@ export type MenuUncheckedUpdateWithoutUserMenuAccessInput = {
   isActive?: Prisma.BoolFieldUpdateOperationsInput | boolean
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  createdBy?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  updatedBy?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  createdBy?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  updatedBy?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   children?: Prisma.MenuUncheckedUpdateManyWithoutParentNestedInput
   menuPermissions?: Prisma.MenuPermissionUncheckedUpdateManyWithoutMenuNestedInput
   userQuickLinks?: Prisma.UserQuickLinkUncheckedUpdateManyWithoutMenuNestedInput
@@ -1160,8 +1172,8 @@ export type MenuCreateWithoutUserQuickLinksInput = {
   isActive?: boolean
   createdAt?: Date | string
   updatedAt?: Date | string
-  createdBy?: string | null
-  updatedBy?: string | null
+  createdBy?: number | null
+  updatedBy?: number | null
   parent?: Prisma.MenuCreateNestedOneWithoutChildrenInput
   children?: Prisma.MenuCreateNestedManyWithoutParentInput
   menuPermissions?: Prisma.MenuPermissionCreateNestedManyWithoutMenuInput
@@ -1183,8 +1195,8 @@ export type MenuUncheckedCreateWithoutUserQuickLinksInput = {
   isActive?: boolean
   createdAt?: Date | string
   updatedAt?: Date | string
-  createdBy?: string | null
-  updatedBy?: string | null
+  createdBy?: number | null
+  updatedBy?: number | null
   children?: Prisma.MenuUncheckedCreateNestedManyWithoutParentInput
   menuPermissions?: Prisma.MenuPermissionUncheckedCreateNestedManyWithoutMenuInput
   userMenuAccess?: Prisma.UserMenuAccessUncheckedCreateNestedManyWithoutMenuInput
@@ -1219,8 +1231,8 @@ export type MenuUpdateWithoutUserQuickLinksInput = {
   isActive?: Prisma.BoolFieldUpdateOperationsInput | boolean
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  createdBy?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  updatedBy?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  createdBy?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  updatedBy?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   parent?: Prisma.MenuUpdateOneWithoutChildrenNestedInput
   children?: Prisma.MenuUpdateManyWithoutParentNestedInput
   menuPermissions?: Prisma.MenuPermissionUpdateManyWithoutMenuNestedInput
@@ -1242,8 +1254,8 @@ export type MenuUncheckedUpdateWithoutUserQuickLinksInput = {
   isActive?: Prisma.BoolFieldUpdateOperationsInput | boolean
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  createdBy?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  updatedBy?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  createdBy?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  updatedBy?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   children?: Prisma.MenuUncheckedUpdateManyWithoutParentNestedInput
   menuPermissions?: Prisma.MenuPermissionUncheckedUpdateManyWithoutMenuNestedInput
   userMenuAccess?: Prisma.UserMenuAccessUncheckedUpdateManyWithoutMenuNestedInput
@@ -1263,8 +1275,8 @@ export type MenuCreateManyParentInput = {
   isActive?: boolean
   createdAt?: Date | string
   updatedAt?: Date | string
-  createdBy?: string | null
-  updatedBy?: string | null
+  createdBy?: number | null
+  updatedBy?: number | null
 }
 
 export type MenuUpdateWithoutParentInput = {
@@ -1280,8 +1292,8 @@ export type MenuUpdateWithoutParentInput = {
   isActive?: Prisma.BoolFieldUpdateOperationsInput | boolean
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  createdBy?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  updatedBy?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  createdBy?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  updatedBy?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   children?: Prisma.MenuUpdateManyWithoutParentNestedInput
   menuPermissions?: Prisma.MenuPermissionUpdateManyWithoutMenuNestedInput
   userMenuAccess?: Prisma.UserMenuAccessUpdateManyWithoutMenuNestedInput
@@ -1302,8 +1314,8 @@ export type MenuUncheckedUpdateWithoutParentInput = {
   isActive?: Prisma.BoolFieldUpdateOperationsInput | boolean
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  createdBy?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  updatedBy?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  createdBy?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  updatedBy?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   children?: Prisma.MenuUncheckedUpdateManyWithoutParentNestedInput
   menuPermissions?: Prisma.MenuPermissionUncheckedUpdateManyWithoutMenuNestedInput
   userMenuAccess?: Prisma.UserMenuAccessUncheckedUpdateManyWithoutMenuNestedInput
@@ -1324,8 +1336,8 @@ export type MenuUncheckedUpdateManyWithoutParentInput = {
   isActive?: Prisma.BoolFieldUpdateOperationsInput | boolean
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  createdBy?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  updatedBy?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  createdBy?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  updatedBy?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
 }
 
 
@@ -1510,8 +1522,8 @@ export type $MenuPayload<ExtArgs extends runtime.Types.Extensions.InternalArgs =
     isActive: boolean
     createdAt: Date
     updatedAt: Date
-    createdBy: string | null
-    updatedBy: string | null
+    createdBy: number | null
+    updatedBy: number | null
   }, ExtArgs["result"]["menu"]>
   composites: {}
 }
@@ -1954,8 +1966,8 @@ export interface MenuFieldRefs {
   readonly isActive: Prisma.FieldRef<"Menu", 'Boolean'>
   readonly createdAt: Prisma.FieldRef<"Menu", 'DateTime'>
   readonly updatedAt: Prisma.FieldRef<"Menu", 'DateTime'>
-  readonly createdBy: Prisma.FieldRef<"Menu", 'String'>
-  readonly updatedBy: Prisma.FieldRef<"Menu", 'String'>
+  readonly createdBy: Prisma.FieldRef<"Menu", 'Int'>
+  readonly updatedBy: Prisma.FieldRef<"Menu", 'Int'>
 }
     
 

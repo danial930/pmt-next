@@ -4,18 +4,18 @@ export interface CreateUserDto {
   password: string;
   firstName: string;
   lastName: string;
-  roleIds?: string[];
+  roleIds?: number[];
 }
 
 export interface UpdateUserDto {
   firstName?: string;
   lastName?: string;
   isActive?: boolean;
-  roleIds?: string[];
+  roleIds?: number[];
 }
 
 export interface UserListItemDto {
-  id: string;
+  id: number;
   email: string;
   firstName: string;
   lastName: string;

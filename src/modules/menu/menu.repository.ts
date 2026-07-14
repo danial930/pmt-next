@@ -95,7 +95,7 @@ export class MenuRepository {
     target?: string;
     badgeText?: string;
     badgeColor?: string;
-    createdBy: string;
+    createdBy: number;
   }) {
     return prisma.menu.create({ data });
   }
@@ -109,12 +109,12 @@ export class MenuRepository {
     isVisible: boolean;
     badgeText: string;
     badgeColor: string;
-    updatedBy: string;
+    updatedBy: number;
   }>) {
     return prisma.menu.update({ where: { id }, data });
   }
 
-  async assignMenuToRole(menuId: number, roleId: number, createdBy: string) {
+  async assignMenuToRole(menuId: number, roleId: number, createdBy: number) {
     return prisma.menuPermission.upsert({
       where: { menuId_roleId_permissionId: { menuId, roleId, permissionId: null as any } },
       update: { isActive: true, updatedBy: createdBy },
@@ -126,7 +126,7 @@ export class MenuRepository {
     userId: number,
     menuId: number,
     access: 'allow' | 'deny',
-    createdBy: string,
+    createdBy: number,
   ) {
     return prisma.userMenuAccess.upsert({
       where: { userId_menuId: { userId, menuId } },

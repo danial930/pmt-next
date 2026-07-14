@@ -14,7 +14,7 @@ export interface AuthenticatedRequest extends NextRequest {
 export const authenticate = async (
   req: NextRequest,
 ): Promise<AccessTokenPayload> => {
-  const authHeader = req.headers.get("authorization");
+  const authHeader = req.headers.get("Authorization");
 
   if (!authHeader?.startsWith("Bearer ")) {
     throw ApiError.unauthorized("Missing or invalid authorization header");
@@ -34,7 +34,7 @@ export const authenticate = async (
 
   // Ensure user still exists and is active
   const user = await prisma.user.findUnique({
-    where: { id: payload.sub },
+    where: { id: payload.userId },
     select: { id: true, isActive: true },
   });
 

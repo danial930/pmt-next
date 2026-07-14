@@ -20,10 +20,10 @@ export function Sidebar({ tree, quickLinks, preferences }: SidebarProps) {
   const prefsMutation = usePreferences();
   const { remove: removeQuickLink } = useQuickLinks();
 
-  const collapsed = preferences.sidebarCollapsed;
-  const width = preferences.sidebarWidth;
+  const collapsed = preferences?.sidebarCollapsed;
+  const width = preferences?.sidebarWidth;
   const [expandedKeys, setExpandedKeys] = useState<Set<string>>(
-    new Set(preferences.expandedMenuKeys),
+    new Set(preferences?.expandedMenuKeys),
   );
 
   const toggleCollapse = useCallback(() => {

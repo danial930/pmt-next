@@ -64,21 +64,21 @@ export function useQuickLinks() {
   const queryClient = useQueryClient();
 
   const add = useMutation({
-    mutationFn: async (menuId: string) => {
+    mutationFn: async (menuId: number) => {
       await apiClient.post('/menu/quick-links', { menuId });
     },
     onSuccess: () => queryClient.invalidateQueries({ queryKey: menuKeys.data() }),
   });
 
   const remove = useMutation({
-    mutationFn: async (menuId: string) => {
+    mutationFn: async (menuId: number) => {
       await apiClient.delete(`/menu/quick-links/${menuId}`);
     },
     onSuccess: () => queryClient.invalidateQueries({ queryKey: menuKeys.data() }),
   });
 
   const reorder = useMutation({
-    mutationFn: async (menuIds: string[]) => {
+    mutationFn: async (menuIds: number[]) => {
       await apiClient.put('/menu/quick-links', { menuIds });
     },
     onMutate: async (menuIds) => {

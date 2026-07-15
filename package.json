@@ -15,7 +15,13 @@
     "prisma:generate:staging": "cross-env APP_ENV=staging prisma generate",
     "prisma:migrate:staging": "cross-env APP_ENV=staging prisma migrate deploy",
     "prisma:generate:prod": "cross-env APP_ENV=production prisma generate",
-    "prisma:migrate:prod": "cross-env APP_ENV=production prisma migrate deploy"
+    "prisma:migrate:prod": "cross-env APP_ENV=production prisma migrate deploy",
+    "prisma:seed:dev": "cross-env APP_ENV=development NODE_ENV=development tsx prisma/seed.ts",
+    "prisma:seed:staging": "cross-env APP_ENV=staging NODE_ENV=staging tsx prisma/seed.ts",
+    "prisma:seed:prod": "cross-env APP_ENV=production NODE_ENV=production tsx prisma/seed.ts"
+  },
+  "prisma": {
+    "seed": "cross-env NODE_ENV=development tsx prisma/seed.ts"
   },
   "dependencies": {
     "@prisma/adapter-pg": "^7.8.0",
@@ -58,6 +64,7 @@
     "prisma": "^7.8.0",
     "tailwindcss": "^4.3.1",
     "ts-jest": "^29.4.11",
+    "tsx": "^4.23.1",
     "typescript": "^5.9.3"
   }
 }

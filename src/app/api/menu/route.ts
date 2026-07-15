@@ -13,7 +13,7 @@ export const GET = withErrorHandler(
   withRequestLogger(
     withAuth(async (_req, user) => {
       const result = await service.getMenuTreeForUser(
-        user.sub,
+        user.userId,
         user.roles,
         user.permissions,
       );

@@ -8,6 +8,8 @@ import { MenuNode, QuickLink, UserPreferenceDto } from '@/types/menu.types';
 import { usePreferences, useQuickLinks } from '@/frontend/hooks/useMenu';
 import * as Icons from 'lucide-react';
 import { ChevronRight, ChevronLeft, Pin, PinOff, Zap } from 'lucide-react';
+import { useAuthStore } from '@/frontend/store/auth.store';
+import { useLogout } from '@/frontend/hooks/useAuth';
 
 interface SidebarProps {
   tree: MenuNode[];
@@ -19,6 +21,7 @@ export function Sidebar({ tree, quickLinks, preferences }: SidebarProps) {
   const pathname = usePathname();
   const prefsMutation = usePreferences();
   const { remove: removeQuickLink } = useQuickLinks();
+  const { mutate: logout, isPending, error, isError } = useLogout();
 
   const collapsed = preferences?.sidebarCollapsed;
   const width = preferences?.sidebarWidth;
@@ -118,6 +121,13 @@ export function Sidebar({ tree, quickLinks, preferences }: SidebarProps) {
       {/* Bottom: nav mode toggle */}
       {!collapsed && (
         <div className="px-3 py-3 border-t border-gray-100 shrink-0">
+          <button
+            onClick={() => logout()}
+            className="w-full flex items-center gap-2 px-3 py-2 rounded-lg text-xs text-gray-500 hover:bg-gray-100 hover:text-gray-700 transition-colors"
+          >
+            <Zap size={14} />
+            Log Out
+          </button>
           <button
             onClick={() => prefsMutation.mutate({ navMode: 'topbar' })}
             className="w-full flex items-center gap-2 px-3 py-2 rounded-lg text-xs text-gray-500 hover:bg-gray-100 hover:text-gray-700 transition-colors"

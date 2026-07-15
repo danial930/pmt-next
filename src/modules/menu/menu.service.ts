@@ -8,7 +8,7 @@ export class MenuService {
 
   // ─── Build tree ────────────────────────────────────────────────────────────
 
-  async getMenuTreeForUser(userId: string, userRoles: string[], userPermissions: string[]): Promise<{
+  async getMenuTreeForUser(userId: number, userRoles: string[], userPermissions: string[]): Promise<{
     tree: MenuNode[];
     quickLinks: QuickLink[];
     preferences: UserPreferenceDto;
@@ -118,7 +118,7 @@ export class MenuService {
 
   // ─── Quick Links ───────────────────────────────────────────────────────────
 
-  async addQuickLink(userId: string, menuId: string): Promise<void> {
+  async addQuickLink(userId: number, menuId: number): Promise<void> {
     const menu = await this.repo.findMenuById(menuId);
     if (!menu) throw ApiError.notFound('Menu item not found');
     if (!menu.path) throw ApiError.badRequest('Cannot add a group header as a quick link');
@@ -132,18 +132,18 @@ export class MenuService {
     await this.repo.upsertQuickLink(userId, menuId, sortOrder);
   }
 
-  async removeQuickLink(userId: string, menuId: string): Promise<void> {
+  async removeQuickLink(userId: number, menuId: number): Promise<void> {
     await this.repo.removeQuickLink(userId, menuId);
   }
 
-  async reorderQuickLinks(userId: string, menuIds: string[]): Promise<void> {
+  async reorderQuickLinks(userId: number, menuIds: number[]): Promise<void> {
     await this.repo.reorderQuickLinks(userId, menuIds);
   }
 
   // ─── Preferences ──────────────────────────────────────────────────────────
 
   async updatePreferences(
-    userId: string,
+    userId: number,
     data: Partial<UserPreferenceDto>,
   ): Promise<UserPreferenceDto> {
     const updated = await this.repo.upsertUserPreference(userId, data);

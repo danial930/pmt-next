@@ -34,7 +34,7 @@ export const authenticate = async (
 
   // Ensure user still exists and is active
   const user = await prisma.user.findUnique({
-    where: { id: payload.userId },
+    where: { id: Number(payload.sub) },
     select: { id: true, isActive: true },
   });
 

@@ -17,6 +17,8 @@ import {
 } from './auth.validator';
 import { AuthTokensDto, UserResponseDto } from './auth.dto';
 import { logger } from '@/lib/logger';
+import { prisma } from '@/lib/prisma';
+import { SuperAdminRoleId } from '@/constants/roles.constants';
 
 const MAX_FAILED_LOGINS = 5;
 const LOCK_DURATION_MINUTES = 15;
@@ -57,43 +59,53 @@ export class AuthService {
   }
 
   // ─── Register ───────────────────────────────────────────────────────────────
+async register(input: RegisterInput): Promise<UserResponseDto> {
+  const existing = await this.repo.findUserByEmail(input.email);
+  if (existing) throw ApiError.conflict('Email already registered');
 
-  async register(input: RegisterInput): Promise<UserResponseDto> {
-    const existing = await this.repo.findUserByEmail(input.email);
-    if (existing) throw ApiError.conflict('Email already registered');
+  const passwordHash = await hashPassword(input.password);
+  const verifyToken  = randomBytes(32).toString('hex');
+  const verifyExpiry = new Date(Date.now() + 24 * 60 * 60 * 1000);
 
-    const passwordHash = await hashPassword(input.password);
-    const verifyToken = randomBytes(32).toString('hex');
-    const verifyExpiry = new Date(Date.now() + 24 * 60 * 60 * 1000); // 24h
+  // Fetch USER role to auto-assign — it always exists after seeding
+  const userRole = await prisma.role.findUnique({ where: { name: 'USER' } });
+  if (!userRole) throw ApiError.internal('Default role not configured');
 
-    const user = await this.repo.createUser({
-      email: input.email,
-      password: passwordHash,
-      firstName: input.firstName,
-      lastName: input.lastName,
-      emailVerifyToken: verifyToken,
-      emailVerifyExpiry: verifyExpiry,
-    });
+  const user = await this.repo.createUser({
+    email: input.email,
+    password: passwordHash,
+    firstName: input.firstName,
+    lastName: input.lastName,
+    emailVerifyToken: verifyToken,
+    emailVerifyExpiry: verifyExpiry,
+    // Assign USER role at creation time inside same transaction
+    userRoles: {
+      create: {
+        roleId: userRole.id,
+        createdBy: SuperAdminRoleId,
+      },
+    },
+  });
 
-    await this.audit.logCreate('User', user.id, {
-      email: user.email,
+  await this.audit.logCreate('User', user.id, {
+    email: user.email,
+    firstName: user.firstName,
+    lastName: user.lastName,
+    role: 'USER',
+  });
+
+  emailService
+    .sendVerificationEmail({
+      to: user.email,
       firstName: user.firstName,
-      lastName: user.lastName,
-    });
+      verifyToken,
+    })
+    .catch((err) =>
+      logger.error({ err, userId: user.id }, 'Failed to send verification email'),
+    );
 
-    // Send verification email — fire and forget, don't block registration
-    emailService
-      .sendVerificationEmail({
-        to: user.email,
-        firstName: user.firstName,
-        verifyToken,
-      })
-      .catch((err) =>
-        logger.error({ err, userId: user.id }, 'Failed to send verification email'),
-      );
-
-    return this.toUserResponse({ ...user, userRoles: [] });
-  }
+  return this.toUserResponse(user);
+}
 
   // ─── Login ──────────────────────────────────────────────────────────────────
 

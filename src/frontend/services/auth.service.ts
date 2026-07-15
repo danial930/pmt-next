@@ -4,7 +4,9 @@ import { apiClient, setAccessToken } from "./api-client";
 export const authService = {
   login: async (email: string, password: string) => {
     const { data } = await apiClient.post("/auth/login", { email, password });
+
     setAccessToken(data.data.accessToken);
+    
     return data.data;
   },
 

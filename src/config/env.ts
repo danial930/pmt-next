@@ -1,3 +1,4 @@
+import "./load-env";
 import { z } from 'zod';
 
 const envSchema = z.object({
@@ -25,6 +26,12 @@ const envSchema = z.object({
 
   RATE_LIMIT_WINDOW_MS: z.coerce.number().default(60000),
   RATE_LIMIT_MAX: z.coerce.number().default(100),
+
+// Seed configuration
+  SUPERADMIN_EMAIL: z.string().email(),
+  SUPERADMIN_PASSWORD: z.string().min(8),
+  SUPERADMIN_FIRST_NAME: z.string().default("Super"),
+  SUPERADMIN_LAST_NAME: z.string().default("Admin"),
 });
 
 export type Env = z.infer<typeof envSchema>;

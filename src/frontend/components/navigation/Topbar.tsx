@@ -8,6 +8,7 @@ import { MenuNode, UserPreferenceDto } from '@/types/menu.types';
 import { usePreferences } from '@/frontend/hooks/useMenu';
 import * as Icons from 'lucide-react';
 import { ChevronDown, LayoutDashboard } from 'lucide-react';
+import { useLogout } from '@/frontend/hooks/useAuth';
 
 interface TopbarProps {
   tree: MenuNode[];
@@ -15,6 +16,7 @@ interface TopbarProps {
 }
 
 export function Topbar({ tree, preferences }: TopbarProps) {
+  const {mutate: logout} = useLogout();
   const pathname = usePathname();
   const prefsMutation = usePreferences();
 
@@ -36,6 +38,14 @@ export function Topbar({ tree, preferences }: TopbarProps) {
       </nav>
 
       {/* Switch to sidebar */}
+
+      <button
+        onClick={() => logout()}
+        className="flex items-center gap-2 px-3 py-2 rounded-lg text-xs text-gray-500 hover:bg-gray-100 hover:text-gray-700 transition-colors ml-4"
+      >
+        <LayoutDashboard size={14} />
+        Log Out
+      </button>
       <button
         onClick={() => prefsMutation.mutate({ navMode: 'sidebar' })}
         className="flex items-center gap-2 px-3 py-2 rounded-lg text-xs text-gray-500 hover:bg-gray-100 hover:text-gray-700 transition-colors ml-4"

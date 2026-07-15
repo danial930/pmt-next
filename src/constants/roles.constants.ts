@@ -7,3 +7,8 @@ export const ROLES = {
 } as const;
 
 export type RoleName = keyof typeof ROLES;
+
+export const SuperAdminRoleId = 1;
+export const AdminRoleId = 4;
+export const ManagerRoleId = 5;
+
